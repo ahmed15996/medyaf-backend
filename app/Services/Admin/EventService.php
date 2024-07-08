@@ -2,6 +2,7 @@
 
 namespace App\Services\Admin;
 
+use App\Models\Event;
 use App\Repositories\Sql\EventRepository;
 use App\Repositories\Sql\EventUserRepository;
 use Illuminate\Http\Request;
@@ -16,9 +17,17 @@ class EventService
         $this->eventUserRepo= $eventUserRepo ;
     }
 
-    public function get_events(){
+    public function get_events($request){
 
-        $events = $this->eventRepo->query()->with(['users']);
+        $events = Event::query()->with(['users']);
+        orderById($request , $events , 'order_by' , 'id');
+        if ($request->has('order_price') && $request->order_price != '') {
+            $events->orderBy('price', $request->order_price);
+        }
+        if ($request->has('order_count') && $request->order_count != '') {
+            $events->orderBy('count', $request->order_count);
+        }
+
         return $this->columns($events);
     }
 
@@ -46,7 +55,7 @@ class EventService
 
 
 
- 
+
 
 
 }

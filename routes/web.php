@@ -2,10 +2,13 @@
 
 use App\Http\Controllers\Dashboard\AdminController;
 use App\Http\Controllers\Dashboard\AuthController;
+use App\Http\Controllers\Dashboard\BoardaringController;
 use App\Http\Controllers\Dashboard\CountryController;
 use App\Http\Controllers\Dashboard\EventController;
 use App\Http\Controllers\Dashboard\EventUserController;
 use App\Http\Controllers\Dashboard\HomeController;
+use App\Http\Controllers\Dashboard\PartyController;
+use App\Http\Controllers\Dashboard\QuestationController;
 use App\Http\Controllers\Dashboard\RoleController;
 use App\Http\Controllers\Dashboard\StaticController;
 use App\Http\Controllers\Dashboard\UserController;
@@ -65,6 +68,8 @@ Route::prefix('admin')->middleware('localization')->name('admin.')->group(functi
         Route::resource('/users' , UserController::class);
         Route::get('get-users'   , [UserController::class , 'get_users'])->name('get-users');
         Route::get('/changeActiveUser', [UserController::class , 'changeActiveUser'])->name('changeActiveUser');
+        Route::get('get-user-events'  , [UserController::class , 'get_user_events'])->name('get-user-events');
+        Route::get('get-user-parties'  , [UserController::class , 'get_user_parties'])->name('get-user-parties');
 
         // countries
         Route::resource('/countries' , CountryController::class);
@@ -78,7 +83,26 @@ Route::prefix('admin')->middleware('localization')->name('admin.')->group(functi
         Route::resource('/event-users'     ,  EventUserController::class);
         Route::get('get-event-users'       , [EventUserController::class , 'get_event_users'])->name('get-event-users');
 
+        // parties
+        Route::resource('/parties'     ,  PartyController::class);
+        Route::get('get-parties'       , [PartyController::class , 'get_parties'])->name('get-parties');
 
+        // boardings
+        Route::resource('/boardings'     ,  BoardaringController::class);
+        Route::get('get-boardings'       , [BoardaringController::class , 'get_boardings'])->name('get-boardings');
+
+
+        // questions
+        Route::resource('/questions'     ,  QuestationController::class);
+        Route::get('get-questions'       , [QuestationController::class , 'get_questions'])->name('get-questions');
+
+
+         // static
+        Route::get('us' , [StaticController::class , 'us'])->name('us');
+        Route::put('update-us' , [StaticController::class , 'update_us'])->name('update-us');
+
+        Route::get('terms' , [StaticController::class , 'terms'])->name('terms');
+        Route::put('update-terms' , [StaticController::class , 'update_terms'])->name('update-terms');
 
         Route::get('setting' , [StaticController::class , 'setting'])->name('setting');
         Route::put('update-setting' , [StaticController::class , 'update_setting'])->name('update-setting');

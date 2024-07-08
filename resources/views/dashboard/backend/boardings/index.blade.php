@@ -1,7 +1,7 @@
 @extends('dashboard.layouts.master')
 
 @section('title')
-   {{ __('models.countries') }}
+   {{ __('models.boardings') }}
 @endsection
 
 
@@ -18,24 +18,23 @@
                 <div class="listjs-table" id="customerList">
                     <div class="row g-4 mb-3">
 
-                        <x-permission name="countries-create">
+                        <x-permission name="boardings-create">
                             <div class="col-sm-auto">
                                 <div>
-                                    <a href="{{ route('admin.countries.create') }}" class="btn btn-success add-btn" ><i class="ri-add-line align-bottom me-1"></i>{{ __('models.add_country') }}</a>
+                                    <a href="{{ route('admin.boardings.create') }}" class="btn btn-success add-btn" ><i class="ri-add-line align-bottom me-1"></i>{{ __('models.add_boarding') }}</a>
                                 </div>
                             </div>
                         </x-permission>
 
                     </div>
-                    <x-order-by name="created_id" label="{{ __('models.order_by') }}"  :options="['asc' => 'الأقدم', 'desc' => 'الأحدث']" />
 
                     <div class="table-responsive table-card mt-3 mb-1">
-                        <table class="table align-middle table-nowrap" id="country_table">
+                        <table class="table align-middle table-nowrap" id="boarding_table">
                             <thead class="table-light">
                                 <tr>
 
-                                    <th class="sort">{{ __('models.countries') }}</th>
-                                    <th class="sort">{{ __('models.users') }}</th>
+                                    <th class="sort">{{ __('models.title') }}</th>
+                                    <th class="sort">{{ __('models.img') }}</th>
                                     <th class="sort">{{ __('models.created_at') }}</th>
                                     <th class="sort" >{{ __('models.action') }}</th>
                                 </tr>
@@ -65,7 +64,7 @@
 
 @section('js')
     <script>
-        var table =  $('#country_table').DataTable({
+        var table =  $('#boarding_table').DataTable({
             processing     : true,
             serverSide     : true ,
             ordering       : false ,
@@ -74,29 +73,27 @@
                     [10 , 50 , 100 ,  -1] ,
                     [10 , 50 , 100 ,  'All'] ,
             ] ,
-            ajax: {
-                url: "{{ route('admin.get-countries') }}",
-                data: function(d) {
-                    d.order_by = $('#created_id').val();
-                }
-            },
+            ajax: "{{ route('admin.get-boardings') }}",
             columns: [
 
 
                 {
-                    data : 'name_ar' ,
+                    data : 'title_ar' ,
                     render: function (data, type, full, meta) {
                         return  data ;
                     },
                 } ,
 
                 {
-                    data : 'users' ,
+                    data: 'img',
                     render: function (data, type, full, meta) {
-                        return  data ;
-                    },
-                    searchable: false
-                } ,
+                        return '<img src="' + '{{ asset("storage/") }}' + '/' + data + '" alt="Image" class="me-3 rounded-circle avatar-md p-2 bg-light" >';
+                    } ,
+                    searchable: false,
+
+                },
+
+
                 {
                     data: 'created_at',
                     render: function (data, type, full, meta) {
@@ -114,10 +111,7 @@
 
             ]
         });
-        $('#created_id').on('change', function(e) {
-            console.log($(this).val());
-            table.draw();
-        });
+
 
     </script>
 @endsection

@@ -3,7 +3,11 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
+use App\Models\EventUser;
+use App\Models\User;
 use App\Repositories\Sql\CountryRepository;
+use App\Repositories\Sql\EventUserRepository;
+use App\Repositories\Sql\PartyRepository;
 use App\Repositories\Sql\UserRepository;
 use App\Services\Admin\UserService;
 use Illuminate\Http\Request;
@@ -11,9 +15,9 @@ use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
-    protected $userRepo , $userService , $countryRepo;
+    protected $userRepo , $userService , $countryRepo , $eventRepo , $partyRepo;
 
-    public function __construct(UserRepository $userRepo , UserService $userService , CountryRepository $countryRepo)
+    public function __construct(UserRepository $userRepo , UserService $userService , CountryRepository $countryRepo , EventUserRepository $eventRepo , PartyRepository $partyRepo)
     {
         $this->middleware('permission:users-read')->only(['index']);
         $this->middleware('permission:users-create')->only(['create', 'store']);
@@ -22,14 +26,16 @@ class UserController extends Controller
         $this->userRepo    = $userRepo ;
         $this->countryRepo = $countryRepo ;
         $this->userService = $userService ;
+        $this->eventRepo   = $eventRepo ;
+        $this->partyRepo   = $partyRepo ;
 
     }
 
 
-    public function get_users()
+    public function get_users(Request $request)
     {
 
-        return $this->userService->get_users();
+        return $this->userService->get_users($request);
 
     }
 
@@ -37,6 +43,11 @@ class UserController extends Controller
     {
         $countries = $this->countryRepo->getAll();
         return view('dashboard.backend.users.index' , compact('countries'));
+    }
+
+    public function show($id){
+        $user = User::with(['parties' , 'events'])->where('id' , auth()->user()->id)->first();
+        return view('dashboard.backend.users.show' , compact('user'));
     }
 
 
@@ -55,8 +66,19 @@ class UserController extends Controller
     public function changeActiveUser(Request $request){
         $user = $this->userRepo->findOne($request->id);
         return $this->userService->cahnge_active($user , $request);
+    }
+
+    public function get_user_events(Request $request){
+        $user_id = $request->query('user_id');
+        $events =  $this->eventRepo->query()->where('user_id' , $user_id);
+        return $this->userService->get_events($events);
+    }
 
 
+    public function get_user_parties(Request $request){
+        $user_id = $request->query('user_id');
+        $parties =  $this->partyRepo->query()->where('user_id' , $user_id);
+        return $this->userService->get_parties($parties);
     }
 
 

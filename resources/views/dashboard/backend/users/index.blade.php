@@ -30,7 +30,8 @@
                             <x-radio label="{{ __('models.not_active') }}" name="fliter_active" value="1"/>
                         </div>
 
-                        <x-select col="4" name="country_id" label="{{ __('models.countries') }}" :options="$countries->pluck('name' , 'id')" type=true/>
+                        <x-select   name="country_id" label="{{ __('models.countries') }}" :options="$countries->pluck('name' , 'id')" type=true/>
+                        <x-order-by name="created_id" label="{{ __('models.order_by') }}"  :options="['asc' => 'الأقدم', 'desc' => 'الأحدث']" />
 
                     </div>
 
@@ -104,8 +105,15 @@
                     [10 , 50 , 100 ,  -1] ,
                     [10 , 50 , 100 ,  'All'] ,
             ] ,
-            ajax: "{{ route('admin.get-users') }}",
+            ajax: {
+                url: "{{ route('admin.get-users') }}",
+                data: function(d) {
+                    d.order_by = $('#created_id').val();
+                }
+            },
             columns: [
+
+
 
 
                 {
@@ -114,6 +122,7 @@
                         return  data ;
                     },
                 } ,
+
 
 
 
@@ -221,6 +230,16 @@
             }
         });
 
+        $('#created_id').on('change', function(e) {
+            console.log($(this).val());
+            table.draw();
+        });
+
 
     </script>
 @endsection
+
+
+
+
+

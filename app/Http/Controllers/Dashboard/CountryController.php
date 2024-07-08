@@ -7,6 +7,7 @@ use App\Http\Requests\Admin\CountryRequest;
 use App\Repositories\Sql\CountryRepository;
 use App\Services\Admin\CountryService;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Http\Request;
 
 
 
@@ -25,9 +26,9 @@ class CountryController extends Controller
     }
 
 
-    public function get_countries()
+    public function get_countries(Request $request)
     {
-        return $this->countryService->get_countries();
+        return $this->countryService->get_countries($request);
     }
 
     public function index()

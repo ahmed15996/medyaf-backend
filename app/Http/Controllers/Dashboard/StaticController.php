@@ -7,7 +7,6 @@ use App\Http\Requests\admin\SettingRequest;
 use App\Http\Requests\Admin\StaticRequest;
 use App\Repositories\Sql\SettingsRepository;
 use App\Repositories\Sql\StaticPageRepository;
-use Illuminate\Http\Request;
 
 class StaticController extends Controller
 {
@@ -20,31 +19,31 @@ class StaticController extends Controller
          $this->settingRepo = $settingRepo ;
     }
 
-    public function about(){
-       $about = $this->staticRepo->findWhere(['type' => 'about']);
-      return view('dashboard.backend.statics.about' , compact('about'));
+    public function us(){
+       $us = $this->staticRepo->findWhere(['type' => 'us']);
+      return view('dashboard.backend.statics.us' , compact('us'));
     }
 
-    public function update_about(StaticRequest $request){
-        $about = $this->staticRepo->findWhere(['type' => 'about']);
+    public function update_us(StaticRequest $request){
+        $us = $this->staticRepo->findWhere(['type' => 'us']);
         $data = $request->except('type');
-        $about['type'] = 'about' ;
-        $about->update($data);
-        return redirect()->route('admin.about')->with('success', 'تم تعديل البيانات بنجاح');
+        $us['type'] = 'us' ;
+        $us->update($data);
+        return redirect()->route('admin.us')->with('success', 'تم تعديل البيانات بنجاح');
 
     }
 
-    public function education(){
-        $education = $this->staticRepo->findWhere(['type' => 'education']);
-       return view('dashboard.backend.statics.education' , compact('education'));
+    public function terms(){
+        $terms = $this->staticRepo->findWhere(['type' => 'terms']);
+       return view('dashboard.backend.statics.terms' , compact('terms'));
     }
 
-    public function update_education(StaticRequest $request){
-         $education = $this->staticRepo->findWhere(['type' => 'education']);
+    public function update_terms(StaticRequest $request){
+         $terms = $this->staticRepo->findWhere(['type' => 'terms']);
          $data = $request->except('type');
-         $education['type'] = 'education' ;
-         $education->update($data);
-         return redirect()->route('admin.education')->with('success', 'تم تعديل البيانات بنجاح');
+         $terms['type'] = 'terms' ;
+         $terms->update($data);
+         return redirect()->route('admin.terms')->with('success', 'تم تعديل البيانات بنجاح');
 
     }
 

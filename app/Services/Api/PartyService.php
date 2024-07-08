@@ -35,6 +35,7 @@ class PartyService
 
     public function add_party(Request $request, $user){
 
+
         // check count invitations //
         $invitationCheck = $this->check_count_invitations($request, $user);
         if ($invitationCheck !== true) {
@@ -79,6 +80,7 @@ class PartyService
     // Verify whether the number of invitations is sufficient or not
     public function check_count_invitations($request, $user){
         $users = json_decode($request->users);
+
         if(!empty($users)){
             $count_users = count($users);
             if($count_users > $user->event){
@@ -157,9 +159,9 @@ class PartyService
         $response = [
            'defult_invataions'     => 2 ,
            'puy_invataions'        => $count_events ,
-           'total_invataions'      => $count_events + 2 ,
+           'total_invataions'      => $total_invataions ,
            'invataions_used'       => $count_users ? $count_users : 0 ,
-           'remaining invitations' => $total_invataions - $count_users ,
+           'remaining_invitations' => $total_invataions - $count_users ,
         ];
 
          return $this->ApiResponse($response , 'data found' , 200);
@@ -173,6 +175,10 @@ class PartyService
 
 
 }
+
+
+
+
 
 
 

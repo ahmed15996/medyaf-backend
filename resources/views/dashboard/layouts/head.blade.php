@@ -29,7 +29,7 @@
 <link href="{{ asset('dashboard') }}/assets/css/custom.min.css" rel="stylesheet" type="text/css" />
 
 @endif
-<link rel="shortcut icon" href="{{ asset('dashboard') }}/assets/images/favicon.ico">
+<link rel="shortcut icon" href="{{ asset('img/logo.svg') }}">
 
 
 

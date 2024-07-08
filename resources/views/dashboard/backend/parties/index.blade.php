@@ -1,8 +1,9 @@
 @extends('dashboard.layouts.master')
 
 @section('title')
-   {{ __('models.countries') }}
+   {{ __('models.parties') }}
 @endsection
+
 
 
 @section('content')
@@ -18,25 +19,23 @@
                 <div class="listjs-table" id="customerList">
                     <div class="row g-4 mb-3">
 
-                        <x-permission name="countries-create">
-                            <div class="col-sm-auto">
-                                <div>
-                                    <a href="{{ route('admin.countries.create') }}" class="btn btn-success add-btn" ><i class="ri-add-line align-bottom me-1"></i>{{ __('models.add_country') }}</a>
-                                </div>
-                            </div>
-                        </x-permission>
+                        <x-select col="6" name="user_id" label="{{ __('models.users') }}" :options="$users->pluck('name' , 'id')" type=true/>
+                        <x-order-by name="created_id" label="{{ __('models.order_by') }}"  :options="['asc' => 'الأقدم', 'desc' => 'الأحدث']" />
+                        <x-forms label="{{ __('models.date') }}" name="date" type="date" />
 
                     </div>
-                    <x-order-by name="created_id" label="{{ __('models.order_by') }}"  :options="['asc' => 'الأقدم', 'desc' => 'الأحدث']" />
 
                     <div class="table-responsive table-card mt-3 mb-1">
-                        <table class="table align-middle table-nowrap" id="country_table">
+                        <table class="table align-middle table-nowrap" id="party_table">
                             <thead class="table-light">
                                 <tr>
 
-                                    <th class="sort">{{ __('models.countries') }}</th>
-                                    <th class="sort">{{ __('models.users') }}</th>
-                                    <th class="sort">{{ __('models.created_at') }}</th>
+                                    <th class="sort">{{ __('models.party_name') }}</th>
+                                    <th class="sort">{{ __('models.img') }}</th>
+                                    <th class="sort">{{ __('models.date') }}</th>
+                                    <th class="sort">{{ __('models.time') }}</th>
+                                    <th class="sort">{{ __('models.location') }}</th>
+                                    <th class="sort">{{ __('models.owner') }}</th>
                                     <th class="sort" >{{ __('models.action') }}</th>
                                 </tr>
                             </thead>
@@ -64,8 +63,10 @@
 @endsection
 
 @section('js')
+
+
     <script>
-        var table =  $('#country_table').DataTable({
+        var table =  $('#party_table').DataTable({
             processing     : true,
             serverSide     : true ,
             ordering       : false ,
@@ -75,35 +76,61 @@
                     [10 , 50 , 100 ,  'All'] ,
             ] ,
             ajax: {
-                url: "{{ route('admin.get-countries') }}",
+                url: "{{ route('admin.get-parties') }}",
                 data: function(d) {
                     d.order_by = $('#created_id').val();
+                    d.date = $('#date').val();
+
                 }
             },
             columns: [
 
 
                 {
-                    data : 'name_ar' ,
+                    data : 'name' ,
                     render: function (data, type, full, meta) {
                         return  data ;
                     },
                 } ,
 
                 {
-                    data : 'users' ,
+                    data: 'img',
                     render: function (data, type, full, meta) {
-                        return  data ;
-                    },
-                    searchable: false
-                } ,
+                        return '<img src="' + '{{ asset("storage/") }}' + '/' + data + '" alt="Image" class="me-3 rounded-circle avatar-md p-2 bg-light" >';
+                    } ,
+                    searchable: false,
+
+                },
+
+
                 {
-                    data: 'created_at',
+                    data : 'date' ,
                     render: function (data, type, full, meta) {
                         return  data ;
                     },
-                    searchable: false
                 } ,
+
+                {
+                    data : 'time' ,
+                    render: function (data, type, full, meta) {
+                        return  data ;
+                    },
+                } ,
+
+                {
+                    data : 'location' ,
+                    render: function (data, type, full, meta) {
+                        return  data ;
+                    },
+                } ,
+
+                {
+                    data : 'user' ,
+                    render: function (data, type, full, meta) {
+                        return  data ;
+                    },
+                } ,
+
 
                 {
                     data : 'action' ,
@@ -114,7 +141,15 @@
 
             ]
         });
+
+        $('#user_id').change(function(){
+            table.column(5).search($(this).val()).draw();
+        });
         $('#created_id').on('change', function(e) {
+            console.log($(this).val());
+            table.draw();
+        });
+        $('#date').on('change', function(e) {
             console.log($(this).val());
             table.draw();
         });

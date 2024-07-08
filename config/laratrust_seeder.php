@@ -23,6 +23,7 @@ return [
             'events'         => 'c,r,u,d',
             'parties'        => 'c,r,u,d',
             'questions'      => 'c,r,u,d',
+            'boardings'      => 'c,r,u,d',
         ],
 
         'admin' => [] ,

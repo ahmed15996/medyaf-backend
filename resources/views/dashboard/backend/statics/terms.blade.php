@@ -3,7 +3,7 @@
 @extends('dashboard.layouts.master')
 
 @section('title')
-  {{ __('models.static') }}
+  {{ __('models.terms') }}
 @endsection
 
 
@@ -17,11 +17,11 @@
         <div class="row">
             <div class="col-12">
                 <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                    <h4 class="mb-sm-0">{{ __('models.static') }}</h4>
+                    <h4 class="mb-sm-0">{{ __('models.terms') }}</h4>
 
                     <div class="page-title-right">
                         <ol class="breadcrumb m-0">
-                            <li class="breadcrumb-item active">{{ __('models.static') }}</li>
+                            <li class="breadcrumb-item active">{{ __('models.terms') }}</li>
                         </ol>
                     </div>
 
@@ -33,15 +33,15 @@
         <div class="card-body">
             <div class="live-preview">
 
-                <form class="row g-3 needs-validation" method="POST" action="{{ route('admin.update-education') }}" enctype="multipart/form-data" novalidate>
+                <form class="row g-3 needs-validation" method="POST" action="{{ route('admin.update-terms') }}" enctype="multipart/form-data" novalidate>
                     @method('PUT')
 
                     @csrf
 
-                    <x-forms    label="{{ __('models.title_ar') }}" name="title_ar" :value="$education->title_ar"/>
-                    <x-forms    label="{{ __('models.title_en') }}" name="title_en" :value="$education->title_en"/>
-                    <x-textarea label="{{ __('models.desc_ar') }}"  name="desc_ar"  :value="$education->desc_ar" />
-                    <x-textarea label="{{ __('models.desc_en') }}"  name="desc_en"  :value="$education->desc_en" />
+                    <x-forms    label="{{ __('models.title_ar') }}" name="title_ar" :value="$terms->title_ar"/>
+                    <x-forms    label="{{ __('models.title_en') }}" name="title_en" :value="$terms->title_en"/>
+                    <x-textarea label="{{ __('models.desc_ar') }}"  name="desc_ar"  :value="$terms->desc_ar" />
+                    <x-textarea label="{{ __('models.desc_en') }}"  name="desc_en"  :value="$terms->desc_en" />
 
 
 

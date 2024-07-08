@@ -5,19 +5,19 @@
         <!-- Dark Logo-->
         <a href="{{ route('admin.home') }}" class="logo logo-dark">
             <span class="logo-sm">
-                <img src="{{ asset('dashboard/assets/images/logo-sm.png')}}" alt="" height="22">
+                <img src="{{ asset('img/logo.svg')}}" alt="" height="22">
             </span>
             <span class="logo-lg">
-                <img src="{{ asset('dashboard/assets/images/logo-dark.png')}}" alt="" height="17">
+                <img src="{{ asset('img/logo.svg')}}" alt="" height="17">
             </span>
         </a>
         <!-- Light Logo-->
         <a href="{{ route('admin.home') }}" class="logo logo-light">
             <span class="logo-sm">
-                <img src="{{ asset('dashboard/assets/images/logo-sm.png')}}" alt="" height="22">
+                <img src="{{ asset('img/logo.svg')}}" alt="" height="22">
             </span>
             <span class="logo-lg">
-                <img src="{{ asset('dashboard/assets/images/logo.png')}}" alt="" height="100" width="100">
+                <img src="{{ asset('img/logo.svg')}}" alt="" height="100" width="100">
             </span>
         </a>
         <button type="button" class="btn btn-sm p-0 fs-20 header-item float-end btn-vertical-sm-hover" id="vertical-hover">
@@ -85,8 +85,8 @@
                     </x-menu>
                 </x-permission>
 
-                 {{--  events  --}}
-                 <x-permission name="events-read">
+                {{--  events  --}}
+                <x-permission name="events-read">
                     <x-menu name="events">
                         <x-nav-item route="{{ route('admin.events.index') }}" label="{{ __('models.events') }}"/>
                         <x-nav-item route="{{ route('admin.events.create') }}" label="{{ __('models.add_event') }}"/>
@@ -95,24 +95,29 @@
                 </x-permission>
 
 
+                {{--  parties  --}}
+                <x-permission name="parties-read">
+                    <x-menu name="parties">
+                        <x-nav-item route="{{ route('admin.parties.index') }}" label="{{ __('models.parties') }}"/>
+                    </x-menu>
+                </x-permission>
+
+
+
 
 
 
                 {{--  static  --}}
-                {{--  <x-permission name="static-read">
+                <x-permission name="static_pages-read">
                     <x-menu name="static">
-                        <x-nav-item route="{{ route('admin.about') }}" label="{{ __('models.about') }}"/>
-                        <x-nav-item route="{{ route('admin.education') }}" label="{{ __('models.education') }}"/>
+                        <x-nav-item route="{{ route('admin.questions.index') }}" label="{{ __('models.questions') }}"/>
+                        <x-nav-item route="{{ route('admin.boardings.index') }}" label="{{ __('models.static') }}"/>
+                        <x-nav-item route="{{ route('admin.us') }}" label="{{ __('models.us') }}"/>
+                        <x-nav-item route="{{ route('admin.terms') }}" label="{{ __('models.terms') }}"/>
                         <x-nav-item route="{{ route('admin.setting') }}" label="{{ __('models.setting') }}"/>
                     </x-menu>
-                </x-permission>  --}}
+                </x-permission>
 
-                 {{--  reservations  --}}
-                {{--  <x-permission name="reservations-read">
-                    <x-menu name="reservations">
-                        <x-nav-item route="{{ route('admin.reservations') }}" label="{{ __('models.reservations') }}"/>
-                    </x-menu>
-                </x-permission>  --}}
 
 
 

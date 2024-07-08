@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Services\Admin;
+
+use App\Models\Country;
 use App\Repositories\Sql\CountryRepository;
 use Illuminate\Http\Request;
 
@@ -13,9 +15,9 @@ class CountryService
         $this->countryRepo    = $countryRepo ;
     }
 
-    public function get_countries(){
-
-        $countries = $this->countryRepo->query();
+    public function get_countries($request){
+        $countries = Country::query();
+        orderById($request , $countries);
         return $this->columns($countries);
     }
 

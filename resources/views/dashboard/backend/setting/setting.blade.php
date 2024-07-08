@@ -39,7 +39,7 @@
 
                    <x-input name="twitter" color="body" i="ri-twitter-fill" text="true" :value=" $setting->twitter" />
                    <x-input name="facebook" color="primary" i="ri-facebook-fill" :value="$setting->facebook" />
-                   <x-input name="youtube" color="danger" i="ri-youtube-fill" :value=" $setting->youtube" />
+                   <x-input name="linkedin" color="info" i="ri-linkedin-fill" :value=" $setting->linkedin" />
                    <x-input name="instagram" color="danger" i="ri-instagram-fill" :value="$setting->instagram" />
                    <x-input name="email" color="success" i="ri-dribbble-fill" :value="$setting->email" />
                    <x-input name="gmail" color="primary" i="ri-pinterest-fill" :value="$setting->gmail" />

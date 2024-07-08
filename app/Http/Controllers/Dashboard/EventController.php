@@ -26,9 +26,9 @@ class EventController extends Controller
     }
 
 
-    public function get_events()
+    public function get_events(Request $request)
     {
-        return $this->eventService->get_events();
+        return $this->eventService->get_events($request);
     }
 
     public function index()
@@ -90,6 +90,6 @@ class EventController extends Controller
 
     }
 
-    
+
 
 }

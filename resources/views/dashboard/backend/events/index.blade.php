@@ -25,6 +25,9 @@
                                 </div>
                             </div>
                         </x-permission>
+                        <x-order-by col="4" name="created_id" label="{{ __('models.order_by') }}"  :options="['asc' => 'الأقدم', 'desc' => 'الأحدث']" />
+                        <x-order-by col="4" name="price" label="{{ __('models.price') }}" :options="['asc' => 'الأقل', 'desc' => 'الأعلي']" />
+                        <x-order-by col="4" name="count" label="{{ __('models.count') }}" :options="['asc' => 'الأقل', 'desc' => 'الأكبر']" />
 
                     </div>
 
@@ -74,7 +77,15 @@
                     [10 , 50 , 100 ,  -1] ,
                     [10 , 50 , 100 ,  'All'] ,
             ] ,
-            ajax: "{{ route('admin.get-events') }}",
+            ajax: {
+                url: "{{ route('admin.get-events') }}",
+                data: function(d) {
+                    d.order_by = $('#created_id').val();
+                    d.order_price = $('#price').val();
+                    d.order_count = $('#count').val();
+                }
+            },
+
             columns: [
 
 
@@ -116,6 +127,21 @@
 
             ]
         });
+
+        $('#created_id').on('change', function(e) {
+            console.log($(this).val());
+            table.draw();
+        });
+
+        $('#price').on('change', function(e) {
+            console.log($(this).val());
+            table.draw();
+        });
+        $('#count').on('change', function(e) {
+            console.log($(this).val());
+            table.draw();
+        });
+
 
 
     </script>

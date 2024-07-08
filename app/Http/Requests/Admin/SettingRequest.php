@@ -17,13 +17,12 @@ class SettingRequest extends FormRequest
     {
         return [
 
-            'twitter'   => 'required' ,
             'facebook'   => 'required' ,
-            'youtube'   => 'required' ,
+            'twitter'   => 'required' ,
+            'linkedin'   => 'required' ,
             'instagram'   => 'required' ,
             'wattsapp'   => 'required' ,
             'phone'   => 'required' ,
-
             'email'   => 'required' ,
             'gmail'   => 'required' ,
 

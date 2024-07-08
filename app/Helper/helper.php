@@ -2,7 +2,6 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\Validator;
 
 
 
@@ -28,3 +27,15 @@ function updateImg(Request $request, array &$data, $imageFieldName, $storagePath
         $data[$imageFieldName] = $admin->$imageFieldName;
     }
 }
+
+
+function orderById(Request $request , $data ){
+    if ($request->has('order_by')) {
+        if ($request->order_by == 'desc') {
+            $data->orderBy('id', 'desc');
+        } elseif ($request->order_by == 'asc') {
+            $data->orderBy('id', 'asc');
+        }
+    }
+}
+

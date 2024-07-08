@@ -1,7 +1,7 @@
 @extends('dashboard.layouts.master')
 
 @section('title')
-   {{ __('models.countries') }}
+   {{ __('models.questions') }}
 @endsection
 
 
@@ -18,24 +18,22 @@
                 <div class="listjs-table" id="customerList">
                     <div class="row g-4 mb-3">
 
-                        <x-permission name="countries-create">
+                        <x-permission name="questions-create">
                             <div class="col-sm-auto">
                                 <div>
-                                    <a href="{{ route('admin.countries.create') }}" class="btn btn-success add-btn" ><i class="ri-add-line align-bottom me-1"></i>{{ __('models.add_country') }}</a>
+                                    <a href="{{ route('admin.questions.create') }}" class="btn btn-success add-btn" ><i class="ri-add-line align-bottom me-1"></i>{{ __('models.add_question') }}</a>
                                 </div>
                             </div>
                         </x-permission>
 
                     </div>
-                    <x-order-by name="created_id" label="{{ __('models.order_by') }}"  :options="['asc' => 'الأقدم', 'desc' => 'الأحدث']" />
 
                     <div class="table-responsive table-card mt-3 mb-1">
-                        <table class="table align-middle table-nowrap" id="country_table">
+                        <table class="table align-middle table-nowrap" id="question_table">
                             <thead class="table-light">
                                 <tr>
 
-                                    <th class="sort">{{ __('models.countries') }}</th>
-                                    <th class="sort">{{ __('models.users') }}</th>
+                                    <th class="sort">{{ __('models.title') }}</th>
                                     <th class="sort">{{ __('models.created_at') }}</th>
                                     <th class="sort" >{{ __('models.action') }}</th>
                                 </tr>
@@ -65,7 +63,7 @@
 
 @section('js')
     <script>
-        var table =  $('#country_table').DataTable({
+        var table =  $('#question_table').DataTable({
             processing     : true,
             serverSide     : true ,
             ordering       : false ,
@@ -74,29 +72,19 @@
                     [10 , 50 , 100 ,  -1] ,
                     [10 , 50 , 100 ,  'All'] ,
             ] ,
-            ajax: {
-                url: "{{ route('admin.get-countries') }}",
-                data: function(d) {
-                    d.order_by = $('#created_id').val();
-                }
-            },
+            ajax: "{{ route('admin.get-questions') }}",
             columns: [
 
 
                 {
-                    data : 'name_ar' ,
+                    data : 'title_ar' ,
                     render: function (data, type, full, meta) {
                         return  data ;
                     },
                 } ,
 
-                {
-                    data : 'users' ,
-                    render: function (data, type, full, meta) {
-                        return  data ;
-                    },
-                    searchable: false
-                } ,
+
+
                 {
                     data: 'created_at',
                     render: function (data, type, full, meta) {
@@ -114,10 +102,7 @@
 
             ]
         });
-        $('#created_id').on('change', function(e) {
-            console.log($(this).val());
-            table.draw();
-        });
+
 
     </script>
 @endsection

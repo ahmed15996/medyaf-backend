@@ -1,7 +1,7 @@
 @extends('dashboard.layouts.master')
 
 @section('title')
-  {{ __('models.add_admin') }}
+  {{ __('models.edit_question') }}
 @endsection
 
 
@@ -11,20 +11,19 @@
 <div class="col-xxl-12">
     <div class="card">
 
-        <x-content add_module="{{ __('models.add_admin') }}" name_module="{{ __('models.admins') }}" route="{{ route('admin.admins.index') }}"/>
+        <x-content add_module="{{ __('models.edit_question') }}" name_module="{{ __('models.questions') }}" route="{{ route('admin.questions.index') }}"/>
+
 
         <div class="card-body">
             <div class="live-preview">
 
-                <form class="row g-3 needs-validation" method="POST" action="{{ route('admin.admins.store') }}" enctype="multipart/form-data" novalidate>
-
+                <form class="row g-3 needs-validation" method="POST" action="{{ route('admin.questions.update' , $ques->id) }}" enctype="multipart/form-data" novalidate>
+                    @method('PUT')
                     @csrf
 
-                    @php
-                        $admin = '' ;
-                    @endphp
 
-                     @include('dashboard.backend.admins._inputs')
+                    @include('dashboard.backend.questions._inputs')
+
 
                     <div class="col-12">
                         <button class="btn btn-primary" type="submit">{{ __('models.submit') }}</button>

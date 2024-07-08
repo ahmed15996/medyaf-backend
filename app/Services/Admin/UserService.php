@@ -2,7 +2,9 @@
 
 namespace App\Services\Admin;
 use App\Http\Controllers\Dashboard\HelperTrait;
+use App\Models\User;
 use App\Repositories\Sql\UserRepository;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class UserService
@@ -15,10 +17,10 @@ class UserService
         $this->userRepo    = $userRepo ;
     }
 
-    public function get_users(){
+    public function get_users($request){
 
-        $users = $this->userRepo->query();
-
+        $users = User::query();
+        orderById($request , $users);
         return $this->columns($users);
     }
 
@@ -51,6 +53,35 @@ class UserService
          ]);
 
          return response()->json(['success' => __('models.status_update')]);
+    }
+
+    public function get_events($events){
+        return DataTables($events)
+
+
+        ->editColumn('price' , function($event){
+            return $event->event->price;
+        })
+
+        ->editColumn('count' , function($event){
+            return $event->event->count;
+        })
+
+
+        ->editColumn('created_at' , function($event){
+            return date('D, d M Y - h:ia', strtotime($event->created_at));
+        })
+        ->make(true);
+    }
+
+    public function get_parties($parties){
+        return DataTables($parties)
+        ->editColumn('time' , function($party){
+            return Carbon::parse($party->time)->format('h:i A');
+        })
+        ->addColumn('action', 'dashboard.backend.parties.actions')
+        ->rawColumns(['action'])
+        ->make(true);
     }
 
 
