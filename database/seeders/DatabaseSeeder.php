@@ -13,7 +13,7 @@ class DatabaseSeeder extends Seeder
         $this->call(LaratrustSeeder::class);
         $this->call(AdminSeeder::class);
         $this->call(CountrySeeder::class);
-        $this->call(UserSeeder::class);
+        // $this->call(UserSeeder::class);
         $this->call(BoardingSeeder::class);
         $this->call(StaticPageSeeder::class);
         $this->call(EventSeeder::class);

@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->decimal('price' , 8, 2);
             $table->integer('count');
+            $table->integer('event_users')->default(0);
             $table->timestamps();
         });
     }

@@ -19,7 +19,7 @@ class EventService
 
     public function get_events($request){
 
-        $events = Event::query()->with(['users']);
+        $events = Event::query();
         orderById($request , $events , 'order_by' , 'id');
         if ($request->has('order_price') && $request->order_price != '') {
             $events->orderBy('price', $request->order_price);
@@ -28,15 +28,16 @@ class EventService
             $events->orderBy('count', $request->order_count);
         }
 
+        if ($request->has('order_event') && $request->order_event != '') {
+            $events->orderBy('event_users', $request->order_event);
+        }
+
         return $this->columns($events);
     }
 
     public function columns($events){
         return DataTables($events)
 
-        ->editColumn('users', function($event) {
-            return  $event->users()->count() ;
-        })
         ->editColumn('created_at' , function($event){
             return $event->created_at->format('y-m-d');
         })
@@ -52,10 +53,5 @@ class EventService
     public function update_event(Request $request , $data , $event){
         $event->update($data);
     }
-
-
-
-
-
 
 }

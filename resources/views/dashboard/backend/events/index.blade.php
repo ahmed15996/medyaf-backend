@@ -25,9 +25,10 @@
                                 </div>
                             </div>
                         </x-permission>
-                        <x-order-by col="4" name="created_id" label="{{ __('models.order_by') }}"  :options="['asc' => 'الأقدم', 'desc' => 'الأحدث']" />
-                        <x-order-by col="4" name="price" label="{{ __('models.price') }}" :options="['asc' => 'الأقل', 'desc' => 'الأعلي']" />
-                        <x-order-by col="4" name="count" label="{{ __('models.count') }}" :options="['asc' => 'الأقل', 'desc' => 'الأكبر']" />
+                        <x-order-by name="created_id" label="{{ __('models.order_by') }}" :options="['asc' => 'الأقدم', 'desc' => 'الأحدث']" />
+                        <x-order-by name="price" label="{{ __('models.price') }}"         :options="['asc' => 'الأقل', 'desc' => 'الأعلي']" />
+                        <x-order-by name="count" label="{{ __('models.count') }}"         :options="['asc' => 'الأقل', 'desc' => 'الأكبر']" />
+                        <x-order-by name="user_events" label="{{ __('models.package') }}" :options="['asc' => 'الاقل استخداما', 'desc' => 'الاكثر استخداما']" />
 
                     </div>
 
@@ -38,7 +39,7 @@
 
                                     <th class="sort">{{ __('models.price') }}</th>
                                     <th class="sort">{{ __('models.count') }}</th>
-                                    <th class="sort">{{ __('models.users') }}</th>
+                                    <th class="sort">{{ __('models.user_events') }}</th>
                                     <th class="sort">{{ __('models.created_at') }}</th>
                                     <th class="sort" >{{ __('models.action') }}</th>
                                 </tr>
@@ -83,6 +84,7 @@
                     d.order_by = $('#created_id').val();
                     d.order_price = $('#price').val();
                     d.order_count = $('#count').val();
+                    d.order_event = $('#user_events').val();
                 }
             },
 
@@ -103,13 +105,15 @@
                     },
                 } ,
 
+
                 {
-                    data : 'users' ,
+                    data : 'event_users' ,
                     render: function (data, type, full, meta) {
                         return  data ;
                     },
                     searchable: false
                 } ,
+
                 {
                     data: 'created_at',
                     render: function (data, type, full, meta) {
@@ -138,6 +142,10 @@
             table.draw();
         });
         $('#count').on('change', function(e) {
+            console.log($(this).val());
+            table.draw();
+        });
+        $('#user_events').on('change', function(e) {
             console.log($(this).val());
             table.draw();
         });

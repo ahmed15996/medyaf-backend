@@ -3,6 +3,7 @@
 namespace App\Services\Api;
 
 use App\Http\Controllers\Api\Traits\ApiResponseTrait;
+use App\Models\Event;
 use App\Repositories\Sql\PartyRepository;
 use Illuminate\Http\Request;
 
@@ -23,6 +24,12 @@ class PartyService
         $event = $user->events()->create([
             'event_id' => $request->event_id
         ]);
+
+        $event_puy = Event::where('id' , $request->event_id)->first();
+        $event_puy->update([
+           'event_users' => $event_puy->event_users + 1
+        ]);
+
 
         // user has two free invitations in addition to the invitations he purchased
         $user->update([
@@ -65,6 +72,7 @@ class PartyService
             return $invitationCheck;
         }
 
+
         // Update party data
         $data = $request->except('img', 'user_id', 'users');
         $data['user_id'] = $owner_party->id;
@@ -104,7 +112,7 @@ class PartyService
            }
 
            // Subtract the number of invitations from the total number
-           $user_inv = auth()->user();
+           $user_inv = $party->user;
            $user_inv->update([
              'event' => $user_inv->event - count($users)
            ]);
@@ -118,19 +126,16 @@ class PartyService
 
         $owner_party = $party->user;  // Party owner
         $users = json_decode($party->users); // Current users in the party
-
         // Delete old users if any
         if (!empty($users)) {
-
             $count_users = count($users);
             $owner_party->update([
                 // Return the number of tickets to the party owner
                 'event' => $owner_party->event + $count_users
             ]);
-
             $party->users()->delete();
-
         }
+
 
     }
 

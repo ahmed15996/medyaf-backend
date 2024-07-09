@@ -59,7 +59,7 @@ class PartyController extends Controller
     public function delete_party($id){
        $party = $this->partyRepo->getWhere([ ['id' , $id] , ['user_id' , auth()->user()->id]])->first();
        return $party ? $this->partyService->delete_party($party) :  $this->notFoundResponse();
-       
+
     }
 
     public function user_statics(){
@@ -83,3 +83,7 @@ class PartyController extends Controller
 
 
 }
+
+
+
+
