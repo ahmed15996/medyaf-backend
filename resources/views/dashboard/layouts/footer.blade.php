@@ -6,7 +6,7 @@
             </div>
             <div class="col-sm-6">
                 <div class="text-sm-end d-none d-sm-block">
-                    Produced by  <a href="https://tek-part.com/" target="blank">Tek part Solution</a>
+                    Produced by  <a href="https://linkdevelopment.sa/" target="blank">Link Development</a>
                 </div>
             </div>
         </div>

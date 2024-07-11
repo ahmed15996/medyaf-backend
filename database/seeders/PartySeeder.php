@@ -19,6 +19,7 @@ class PartySeeder extends Seeder
         for ($i=0; $i < 50 ; $i++) {
             $date = $startDate->copy()->addDays(rand(1, 7));
             Party::create([
+                'code'       => $fake->unique()->numberBetween(100000 , 999999) ,
                 'name'       => 'المناسبه رقم ' . $i ,
                 'img'        => 'parties/1.png' ,
                 'date'       => $date ,

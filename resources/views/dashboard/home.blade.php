@@ -29,7 +29,7 @@
             <div class="row">
 
                 <div class="row">
-                    <div class="col-xxl-5">
+                    <div class="col-xxl-12">
                         <div class="card">
                             <div class="card-header align-items-center d-flex">
                                 <h4 class="card-title mb-0 flex-grow-1">{{ __('models.party_today') }}</h4>
@@ -51,7 +51,7 @@
                                                 </div>
                                                 <div class="col">
                                                     <h5 class="text-muted mt-0 mb-1 fs-13">{{ Carbon\Carbon::parse($party->time)->format('h:i A') }}</h5>
-                                                    <a href="#" class="text-reset fs-14 mb-0">{{ $party->name }}</a>
+                                                    <a href="{{ route('admin.parties.show' , $party->id) }}" class="text-reset fs-14 mb-0">{{ $party->name }}</a>
                                                 </div>
                                                 <div class="col-sm-auto">
                                                     <div class="avatar-group">
@@ -78,13 +78,19 @@
                                 </div><!-- end card body -->
                             @else
 
-                            <div> لا توجد مناسبات اليوم</div>
+                            <div class="no_data"> لا توجد مناسبات اليوم</div>
                             @endif
                         </div><!-- end card -->
                     </div><!-- end col -->
 
 
+
+
+
+
                 </div>
+
+
 
 
 
@@ -123,3 +129,5 @@
 
 
 @endsection
+
+

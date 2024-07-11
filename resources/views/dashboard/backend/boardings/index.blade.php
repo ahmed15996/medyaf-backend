@@ -63,6 +63,8 @@
 @endsection
 
 @section('js')
+    <script src="{{ asset('dashboard/assets/js/custom-delete.js') }}"></script>
+
     <script>
         var table =  $('#boarding_table').DataTable({
             processing     : true,

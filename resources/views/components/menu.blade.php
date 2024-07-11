@@ -1,10 +1,10 @@
 @props([
-    'name'
+    'name' , 'icon' => ''
 ])
 
 <li class="nav-item">
     <a class="nav-link menu-link" href="#{{ $name }}" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="{{ $name }}">
-        <i class="ri-mail-star-fill"></i> <span data-key="t-pages">{{ __('models.' . $name) }}</span>
+        <i class="{{ $icon }}"></i> <span data-key="t-pages">{{ __('models.' . $name) }}</span>
     </a>
 
 

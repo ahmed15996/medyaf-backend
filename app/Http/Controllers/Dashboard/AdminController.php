@@ -69,6 +69,10 @@ class AdminController extends Controller
         return view('dashboard.backend.admins.edit' , compact('admin' , 'roles'));
     }
 
+    public function show($id){
+
+    }
+
 
     public function update(AdminRequest $request, $id)
     {
@@ -86,7 +90,9 @@ class AdminController extends Controller
             Storage::delete($admin->img);
         }
         $admin->delete();
-        return redirect(route('admin.admins.index'))->with('success', __('models.deleted_successfully'));
+        return \response()->json([
+            'message' => __('models.deleted_successfully')
+        ]);
     }
 
     public function profile()

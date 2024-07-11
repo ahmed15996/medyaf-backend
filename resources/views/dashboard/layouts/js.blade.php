@@ -11,6 +11,7 @@
 
 
 
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <!-- ckeditor -->
 <script src="{{ asset('dashboard/assets/libs/@ckeditor/ckeditor5-build-classic/build/ckeditor.js')}}"></script>

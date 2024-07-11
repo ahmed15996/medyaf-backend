@@ -152,7 +152,7 @@
                     <div class="tab-content pt-4 text-muted">
                         <div class="tab-pane active" id="overview-tab" role="tabpanel">
                             <div class="row">
-                                <div class="col-xxl-3">
+                                <div class="col-md-12">
 
 
                                     <div class="card">
@@ -162,16 +162,16 @@
                                                 <table class="table table-borderless mb-0">
                                                     <tbody>
                                                         <tr>
-                                                            <th class="ps-0" scope="row">{{ __('models.name') }} :</th>
+                                                            <th class="ps-2" scope="row">{{ __('models.name') }} :</th>
                                                             <td class="text-muted">{{ $user->name }}</td>
                                                         </tr>
 
                                                         <tr>
-                                                            <th class="ps-0" scope="row">{{ __('models.email') }} :</th>
+                                                            <th class="ps-2" scope="row">{{ __('models.email') }} :</th>
                                                             <td class="text-muted">{{ $user->email }}</td>
                                                         </tr>
                                                         <tr>
-                                                            <th class="ps-0" scope="row">{{ __('models.countries') }} :</th>
+                                                            <th class="ps-2" scope="row">{{ __('models.countries') }} :</th>
                                                             <td class="text-muted"><span class="badge bg-secondary">{{ $user->country ? $user->country->name : ''}}</span>
 
                                                             </td>
@@ -179,7 +179,7 @@
 
 
                                                         <tr>
-                                                            <th class="ps-0" scope="row">{{ __('models.created_at') }}</th>
+                                                            <th class="ps-2" scope="row">{{ __('models.created_at') }}</th>
                                                             <td class="text-muted">{{ date('D, d M Y - h:ia', strtotime($user->created_at)) }}</td>
                                                         </tr>
                                                     </tbody>
@@ -211,7 +211,7 @@
 
 
             <div class="d-grid gap-2" >
-                <a href="" class="btn btn-trans waves-effect waves-light btn-block add-input-value-color">{{ __('models.events') }}</a><br>
+                <a href="" class="btn btn-success  waves-effect waves-light btn-block add-input-value-color">{{ __('models.events') }}</a><br>
             </div>
 
               <div class="card-body">

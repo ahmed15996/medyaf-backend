@@ -340,7 +340,7 @@ abstract class BaseRepository implements BaseRepositoryInterface
      */
     public function findOne($id)
     {
-        return $this->model->find($id);
+        return $this->model->findOrFail($id);
     }
 
     /**

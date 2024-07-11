@@ -19,12 +19,14 @@
                     <div class="row g-4 mb-3">
 
                         <x-permission name="events-create">
-                            <div class="col-sm-auto">
+                            <div class="col-lg-12">
                                 <div>
                                     <a href="{{ route('admin.events.create') }}" class="btn btn-success add-btn" ><i class="ri-add-line align-bottom me-1"></i>{{ __('models.add_event') }}</a>
                                 </div>
                             </div>
                         </x-permission>
+
+
                         <x-order-by name="created_id" label="{{ __('models.order_by') }}" :options="['asc' => 'الأقدم', 'desc' => 'الأحدث']" />
                         <x-order-by name="price" label="{{ __('models.price') }}"         :options="['asc' => 'الأقل', 'desc' => 'الأعلي']" />
                         <x-order-by name="count" label="{{ __('models.count') }}"         :options="['asc' => 'الأقل', 'desc' => 'الأكبر']" />
@@ -68,6 +70,8 @@
 @endsection
 
 @section('js')
+    <script src="{{ asset('dashboard/assets/js/custom-delete.js') }}"></script>
+
     <script>
         var table =  $('#event_table').DataTable({
             processing     : true,

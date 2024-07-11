@@ -86,7 +86,8 @@ class CountryController extends Controller
         }
 
         $country->delete();
-        return redirect(route('admin.countries.index'))->with('success', __('models.deleted_successfully'));
-
+        return \response()->json([
+            'message' => __('models.deleted_successfully')
+        ]);
     }
 }

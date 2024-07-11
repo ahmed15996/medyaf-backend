@@ -52,7 +52,7 @@
 
                 {{--  roles  --}}
                 <x-permission name="roles-read">
-                    <x-menu name="roles">
+                    <x-menu name="roles" icon="ri-registered-fill">
                         <x-nav-item route="{{ route('admin.roles.index') }}" label="{{ __('models.roles') }}"/>
                         <x-nav-item route="{{ route('admin.roles.create') }}" label="{{ __('models.add_role') }}"/>
                     </x-menu>
@@ -61,7 +61,7 @@
 
                 {{--  admins  --}}
                 <x-permission name="admins-read">
-                    <x-menu name="admins">
+                    <x-menu name="admins" icon="ri-user-fill">
                         <x-nav-item route="{{ route('admin.admins.index') }}" label="{{ __('models.admins') }}"/>
                         <x-nav-item route="{{ route('admin.admins.create') }}" label="{{ __('models.add_admin') }}"/>
                     </x-menu>
@@ -72,14 +72,14 @@
 
                 {{--  users  --}}
                 <x-permission name="users-read">
-                    <x-menu name="users">
+                    <x-menu name="users" icon="ri-user-heart-fill">
                         <x-nav-item route="{{ route('admin.users.index') }}" label="{{ __('models.users') }}"/>
                     </x-menu>
                 </x-permission>
 
                 {{--  countries  --}}
                 <x-permission name="countries-read">
-                    <x-menu name="countries">
+                    <x-menu name="countries" icon="ri-map-pin-fill">
                         <x-nav-item route="{{ route('admin.countries.index') }}" label="{{ __('models.countries') }}"/>
                         <x-nav-item route="{{ route('admin.countries.create') }}" label="{{ __('models.add_country') }}"/>
                     </x-menu>
@@ -87,7 +87,7 @@
 
                 {{--  events  --}}
                 <x-permission name="events-read">
-                    <x-menu name="events">
+                    <x-menu name="events" icon="ri-mail-open-fill">
                         <x-nav-item route="{{ route('admin.events.index') }}" label="{{ __('models.events') }}"/>
                         <x-nav-item route="{{ route('admin.events.create') }}" label="{{ __('models.add_event') }}"/>
                         <x-nav-item route="{{ route('admin.event-users.index') }}" label="{{ __('models.event_users') }}"/>
@@ -97,7 +97,7 @@
 
                 {{--  parties  --}}
                 <x-permission name="parties-read">
-                    <x-menu name="parties">
+                    <x-menu name="parties" icon="ri-hand-heart-fill">
                         <x-nav-item route="{{ route('admin.parties.index') }}" label="{{ __('models.parties') }}"/>
                     </x-menu>
                 </x-permission>
@@ -109,7 +109,7 @@
 
                 {{--  static  --}}
                 <x-permission name="static_pages-read">
-                    <x-menu name="static">
+                    <x-menu name="static" icon="ri-settings-4-fill">
                         <x-nav-item route="{{ route('admin.questions.index') }}" label="{{ __('models.questions') }}"/>
                         <x-nav-item route="{{ route('admin.boardings.index') }}" label="{{ __('models.static') }}"/>
                         <x-nav-item route="{{ route('admin.us') }}" label="{{ __('models.us') }}"/>

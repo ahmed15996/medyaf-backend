@@ -4,7 +4,9 @@
   {{ __('models.party_details') }}
 @endsection
 
-
+@section('css')
+<link href="https://cdn.jsdelivr.net/npm/lity@2.4.1/dist/lity.min.css" rel="stylesheet">
+@endsection
 @section('content')
 
 <div class="row">
@@ -50,7 +52,9 @@
                             <tr>
                                 <td class="fw-medium">{{ __('models.img') }}</td>
                                 <td>
-                                    <img src="{{ asset('storage/' . $party->img)}}" alt="{{ $party->name }}" class="avatar-xl rounded-circle shadow test-popup-link">
+                                    <a href="#" data-lity data-lity-target="{{ asset('storage/' . $party->img)}}">
+                                        <img src="{{ asset('storage/' . $party->img)}}" alt="{{ $party->name }}" class="avatar-xl rounded-circle shadow test-popup-link">
+                                    </a>
 
                                 </td>
                             </tr>
@@ -101,6 +105,17 @@
         </div>
         <!--end card-->
 
+
+
+
+        <div class="col-md-12 col-12 mb-3">
+            <div class="d-flex col-12 flex-column mb-7 fv-row fv-plugins-icon-container" style="height:100vh">
+
+                <div id="map" style="height: 100%;width: 100%;">
+            </div>
+        </div>
+
+
     </div>
 
 </div>
@@ -113,5 +128,7 @@
 
 
 @section('js')
-   
+<script src="https://cdn.jsdelivr.net/npm/lity@2.4.1/dist/lity.min.js"></script>
+@include('dashboard.backend.parties.mab')
+
 @endsection

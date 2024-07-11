@@ -17,6 +17,7 @@
             <div class="card-body">
                 <div class="listjs-table" id="customerList">
                     <div class="row g-4 mb-3">
+                       <div class="col-md-6">
                         <div class="custom-controls m-1" style="background-color: #eee; padding: 5px; border-radius: 4px;">
                             <x-radio label="All" name="fliter_type" value="all"/>
                             <x-radio label="Email" name="fliter_type" value="email"/>
@@ -24,11 +25,14 @@
                             <x-radio label="Apple" name="fliter_type" value="apple"/>
                         </div>
 
+                       </div>
+                       <div class="col-md-6">
                         <div  class="custom-controls m-1" style="background-color: #eee; padding: 5px; border-radius: 4px;">
                             <x-radio label="{{ __('models.all') }}" name="fliter_active" value="all"/>
                             <x-radio label="{{ __('models.active') }}" name="fliter_active" value="0"/>
                             <x-radio label="{{ __('models.not_active') }}" name="fliter_active" value="1"/>
                         </div>
+                    </div>
 
                         <x-select   name="country_id" label="{{ __('models.countries') }}" :options="$countries->pluck('name' , 'id')" type=true/>
                         <x-order-by name="created_id" label="{{ __('models.order_by') }}"  :options="['asc' => 'الأقدم', 'desc' => 'الأحدث']" />
@@ -75,6 +79,8 @@
 @endsection
 
 @section('js')
+    <script src="{{ asset('dashboard/assets/js/custom-delete.js') }}"></script>
+
     <script>
         $(function() {
             $(document).on('change', '.is_active', function() {

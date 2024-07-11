@@ -1,16 +1,17 @@
+@php
+    $user = App\Models\User::where('id' , $id)->first();
+@endphp
+
 <td>
     <div class="hstack gap-3 flex-wrap">
-        <a href="{{ route('admin.users.show' , $id) }}" class="link-success fs-15 icon3"><i class="ri-eye-2-line"></i></a>
+        <a href="{{ route('admin.users.show' , $user->id) }}" class="link-success fs-15 icon3"><i class="ri-eye-2-line"></i></a>
         <x-permission name="users-delete">
-            <a href="#" class="link-danger fs-15 icon4" data-bs-toggle="modal" data-bs-target="#deleteRecordModal{{ $id }}"><i class="ri-delete-bin-line"></i></a>
+            <a href="{{ route('admin.users.destroy' , $user->id) }}" data-id="{{ $user->id }}" class="link-danger fs-15 item-delete icon4"><i class="ri-delete-bin-line"></i></a>
         </x-permission>
     </div>
 </td>
 
 
-@php
-    $user = App\Models\User::where('id' , $id)->first();
-@endphp
 
 
-<x-destroy id="deleteRecordModal{{ $id }}" route="{{ route('admin.users.destroy' , $id) }}" :value="$user->name"/>
+

@@ -74,6 +74,7 @@ class RoleController extends Controller
     public function destroy($id)
     {
         $role = $this->roleRepo->findOne($id)->delete();
-        return redirect(route('admin.roles.index'))->with('success', __('models.deleted_successfully'));
-    }
+        return \response()->json([
+            'message' => __('models.deleted_successfully')
+        ]);    }
 }

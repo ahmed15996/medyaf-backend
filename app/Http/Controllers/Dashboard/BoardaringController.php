@@ -87,7 +87,8 @@ class BoardaringController extends Controller
         }
 
        $board->delete();
-        return redirect(route('admin.boardings.index'))->with('success', __('models.deleted_successfully'));
-
+        return \response()->json([
+            'message' => __('models.deleted_successfully')
+        ]);
     }
 }

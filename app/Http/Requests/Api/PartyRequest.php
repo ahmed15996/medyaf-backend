@@ -21,7 +21,7 @@ class PartyRequest extends MasterApiRequest
             'date'     => 'required|date' ,
             'time'     => 'required' ,
             'qr_code'  => 'required' ,
-            'users'    => 'required' ,
+            // 'users'    => 'required' ,
             'img'      => 'required|mimes:png,jpg,jpeg'
 
         ];

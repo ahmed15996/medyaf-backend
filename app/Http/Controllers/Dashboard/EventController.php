@@ -86,8 +86,9 @@ class EventController extends Controller
         }
 
         $event->delete();
-        return redirect(route('admin.events.index'))->with('success', __('models.deleted_successfully'));
-
+        return \response()->json([
+            'message' => __('models.deleted_successfully')
+        ]);
     }
 
 

@@ -64,6 +64,8 @@
 @endsection
 
 @section('js')
+    <script src="{{ asset('dashboard/assets/js/custom-delete.js') }}"></script>
+
     <script>
         $('#admin_table').DataTable({
         processing     : true,

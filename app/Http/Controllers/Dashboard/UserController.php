@@ -59,7 +59,9 @@ class UserController extends Controller
             Storage::delete($user->img);
         }
         $user->delete();
-        return redirect(route('admin.users.index'))->with('success', __('models.deleted_successfully'));
+        return \response()->json([
+            'message' => __('models.deleted_successfully')
+        ]);
     }
 
 

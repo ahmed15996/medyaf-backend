@@ -28,7 +28,9 @@ use Illuminate\Support\Facades\Route;
 
 
 
-
+Route::get('404' , function(){
+    return 'مش موجود' ;
+})->name('not-found');
 
 Route::get('/opt', function () {
     Artisan::call('optimize');

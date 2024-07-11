@@ -73,13 +73,13 @@
                     </button>
                 </div>
 
-                <div class="ms-1 header-item d-none d-sm-flex">
+                {{--  <div class="ms-1 header-item d-none d-sm-flex">
                     <button type="button"
                         class="btn btn-icon btn-topbar btn-ghost-secondary rounded-circle light-dark-mode shadow-none">
                         <i class='bx bx-moon fs-22'></i>
                     </button>
-                </div>
-                @if (app()->getLocale() == 'ar')
+                </div>  --}}
+                {{--  @if (app()->getLocale() == 'ar')
                     <div class="ms-1 header-item d-none d-sm-flex">
                         <a href="{{ route('language', 'en') }}"
                             class="btn btn-icon btn-topbar btn-ghost-secondary rounded-circle  shadow-none">
@@ -94,11 +94,11 @@
                                 alt="img">
                         </a>
                     </div>
-                @endif
+                @endif  --}}
 
 
                 {{--  notification  --}}
-                {{--  
+                {{--
                     <div class="dropdown topbar-head-dropdown ms-1 header-item" id="notificationDropdown">
                     <button type="button" class="btn btn-icon btn-topbar btn-ghost-secondary rounded-circle shadow-none" id="page-header-notifications-dropdown" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-haspopup="true" aria-expanded="false">
                         <i class='bx bx-bell fs-22'></i>

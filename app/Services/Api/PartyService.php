@@ -5,6 +5,7 @@ namespace App\Services\Api;
 use App\Http\Controllers\Api\Traits\ApiResponseTrait;
 use App\Models\Event;
 use App\Repositories\Sql\PartyRepository;
+use Faker\Factory;
 use Illuminate\Http\Request;
 
 class PartyService
@@ -42,16 +43,18 @@ class PartyService
 
     public function add_party(Request $request, $user){
 
-
+       
         // check count invitations //
         $invitationCheck = $this->check_count_invitations($request, $user);
         if ($invitationCheck !== true) {
             return $invitationCheck;
         }
+        $fake = Factory::create();
 
         // add party data //
         $data = $request->except('img', 'user_id', 'users');
         $data['user_id'] = $user->id;
+        $data['code'] = $fake->unique()->numberBetween(100000 , 999999) ;
 
         // add image by helper
         addImage($request, $data, 'img', 'parties');

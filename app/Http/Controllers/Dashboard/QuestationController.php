@@ -87,7 +87,8 @@ class QuestationController extends Controller
         }
 
         $ques->delete();
-        return redirect(route('admin.questions.index'))->with('success', __('models.deleted_successfully'));
-
+        return \response()->json([
+            'message' => __('models.deleted_successfully')
+        ]);
     }
 }

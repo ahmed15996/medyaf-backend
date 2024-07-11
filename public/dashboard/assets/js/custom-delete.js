@@ -1,21 +1,18 @@
 $(document).ready(function () {
-
     $(document).on('click', '.item-delete', function (e) {
-
         e.preventDefault();
-        const Toast2 = Swal.mixin({
 
+        const Toast2 = Swal.mixin({
             showConfirmButton: false,
             timer: 4000,
             timerProgressBar: true,
             didOpen: (toast) => {
-                toast.addEventListener('mouseenter', Swal.stopTimer)
-                toast.addEventListener('mouseleave', Swal.resumeTimer)
+                toast.addEventListener('mouseenter', Swal.stopTimer);
+                toast.addEventListener('mouseleave', Swal.resumeTimer);
             }
         });
 
         const Toast = Swal.mixin({
-
             showCancelButton: true,
             showConfirmButton: true,
             cancelButtonColor: '#888',
@@ -24,17 +21,16 @@ $(document).ready(function () {
             cancelButtonText: 'لا',
             timerProgressBar: true,
             didOpen: (toast) => {
-                toast.addEventListener('mouseenter', Swal.stopTimer)
-                toast.addEventListener('mouseleave', Swal.resumeTimer)
+                toast.addEventListener('mouseenter', Swal.stopTimer);
+                toast.addEventListener('mouseleave', Swal.resumeTimer);
             }
-        })
+        });
 
         Toast.fire({
             icon: 'question',
             title: 'هل تريد الحذف ؟'
         }).then((result) => {
             if (result.isConfirmed) {
-
                 var id = $(this).data('id');
                 var url = $(this).attr('href');
                 var elem = $(this).closest('tr');
@@ -51,51 +47,21 @@ $(document).ready(function () {
                     success: function (result) {
                         elem.fadeOut();
 
-
-                        const Toast = Swal.mixin({
-                            toast: true,
-                            position: 'top-start',
-                            showConfirmButton: false,
-                            timer: 4000,
-                            timerProgressBar: true,
-                            didOpen: (toast) => {
-                                toast.addEventListener('mouseenter', Swal.stopTimer)
-                                toast.addEventListener('mouseleave', Swal.resumeTimer)
-                            }
-                        })
-
-                        Toast.fire({
+                        Toast2.fire({
                             icon: 'success',
                             title: "تم الحذف بنجاح"
-                        })
-
-
-                    } // end of success
-
-                }); // end of ajax 
-
-            } else if (result.dismiss === Swal.DismissReason.cancel) {
-
-                const Toast = Swal.mixin({
-                    toast: true,
-                    position: 'top-start',
-                    showConfirmButton: false,
-                    timer: 4000,
-                    timerProgressBar: true,
-                    didOpen: (toast) => {
-                        toast.addEventListener('mouseenter', Swal.stopTimer)
-                        toast.addEventListener('mouseleave', Swal.resumeTimer)
+                        });
+                    },
+                    error: function (xhr) {
+                        console.error('حدث خطأ في الحذف: ', xhr.responseText);
                     }
-                })
-
-                Toast.fire({
+                });
+            } else if (result.dismiss === Swal.DismissReason.cancel) {
+                Toast2.fire({
                     icon: 'success',
                     title: "تم الالغاء بنجاح"
-                })
-
-            } // end of else confirmed
-
-        }) // end of then
+                });
+            }
+        });
     });
-
 });
