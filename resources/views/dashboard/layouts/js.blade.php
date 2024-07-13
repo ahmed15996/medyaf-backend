@@ -37,7 +37,23 @@
 <script src="{{ asset('dashboard/assets/js/cdn.datatables.net_1.13.6_js_jquery.dataTables.js')}}"></script>
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 <script src="{{ asset('dashboard/assets/js/pages/select2.init.js')}}"></script>
-
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+<script>
+$('.summernote').summernote({
+    placeholder: 'يرجي ادخال الوصف',
+    tabsize: 2,
+    height: 200,
+    toolbar: [
+    ['style', ['style']],
+    ['font', ['bold', 'underline', 'clear']],
+    ['color', ['color']],
+    ['para', ['ul', 'ol', 'paragraph']],
+    ['table', ['table']],
+    ['insert', ['link', 'picture', 'video']],
+    ['view', ['fullscreen', 'codeview', 'help']]
+    ]
+});
+</script>
 
 
 @yield('js')

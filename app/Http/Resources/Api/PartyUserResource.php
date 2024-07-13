@@ -12,9 +12,11 @@ class PartyUserResource extends JsonResource
     {
         return [
 
-            'id' => $this->id ,
-            'phone' => $this->phone ,
-            'count' => $this->count ,
+            'id'       => $this->id ,
+            'phone'    => $this->phone ,
+            'count'    => $this->count ,
+            'name'     => $this->name ,
+            'sur_name' => $this->sur_name ,
         ];
     }
 }

@@ -4,7 +4,9 @@
    {{ __('models.parties') }}
 @endsection
 
+@section('css')
 
+@endsection
 
 @section('content')
 
@@ -19,10 +21,9 @@
                 <div class="listjs-table" id="customerList">
                     <div class="row g-4 mb-3">
 
-                        <x-select col="6" name="user_id" label="{{ __('models.users') }}" :options="$users->pluck('name' , 'id')" type=true/>
-                        <x-order-by name="created_id" label="{{ __('models.order_by') }}"  :options="['asc' => 'الأقدم', 'desc' => 'الأحدث']" />
-                        <x-forms label="{{ __('models.date') }}" name="date" type="date" />
-
+                        <x-select col="4" name="user_id" label="{{ __('models.users') }}" :options="$users->pluck('name' , 'id')" type=true/>
+                        <x-order-by col="4" name="created_id" label="{{ __('models.order_by') }}"  :options="['asc' => 'الأقدم', 'desc' => 'الأحدث']" />
+                        <x-forms col="4"  name="date" value="" type="date" label="{{ __('models.date') }}"/>
                     </div>
 
                     <div class="table-responsive table-card mt-3 mb-1">
@@ -34,7 +35,7 @@
                                     <th class="sort">{{ __('models.img') }}</th>
                                     <th class="sort">{{ __('models.date') }}</th>
                                     <th class="sort">{{ __('models.time') }}</th>
-                                    <th class="sort">{{ __('models.location') }}</th>
+                                    <th class="sort">{{ __('models.code') }}</th>
                                     <th class="sort">{{ __('models.owner') }}</th>
                                     <th class="sort" >{{ __('models.action') }}</th>
                                 </tr>
@@ -66,6 +67,7 @@
 
     <script src="{{ asset('dashboard/assets/js/custom-delete.js') }}"></script>
 
+    <script src="{{ asset('dashboard/assets/js/app.js') }}"></script>
     <script>
         var table =  $('#party_table').DataTable({
             processing     : true,
@@ -119,7 +121,7 @@
                 } ,
 
                 {
-                    data : 'location' ,
+                    data : 'code' ,
                     render: function (data, type, full, meta) {
                         return  data ;
                     },

@@ -50,6 +50,10 @@
                                 <td>{{ $party->name }}</td>
                             </tr>
                             <tr>
+                                <td class="fw-medium">{{ __('models.code') }}</td>
+                                <td>{{ $party->code }}</td>
+                            </tr>
+                            <tr>
                                 <td class="fw-medium">{{ __('models.img') }}</td>
                                 <td>
                                     <a href="#" data-lity data-lity-target="{{ asset('storage/' . $party->img)}}">

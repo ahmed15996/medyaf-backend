@@ -46,8 +46,7 @@
 
                     <x-forms label="{{ __('models.wattsapp') }}"  name="wattsapp" :value="$setting->wattsapp" type="number"/>
                     <x-forms label="{{ __('models.phone') }}"     name="phone" :value="$setting->phone" type="number"/>
-                    <x-mab :value="$setting"/>
-                   <br><br>
+
 
 
 
@@ -71,7 +70,6 @@
 
 
 @section('js')
-@include('dashboard.backend.setting.mab')
 <script src="{{ asset('dashboard/assets/js/preview-image.js') }}"></script>
 
 @endsection

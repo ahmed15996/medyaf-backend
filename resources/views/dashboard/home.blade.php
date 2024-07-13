@@ -101,13 +101,7 @@
                 <x-statics label="{{ __('models.events') }}" color="primary"    :value="$events" route="{{ route('admin.events.index') }}"/>
                 <x-statics label="{{ __('models.parties') }}" color="primary"   :value="$parties" route="{{ route('admin.parties.index') }}"/>
 
-                <x-statics label="{{ __('models.count_today') }}" color="primary"   :value="$count_today " route="#"/>
-                <x-statics label="{{ __('models.count_week') }}" color="primary"    :value="$count_week " route="#"/>
-                <x-statics label="{{ __('models.count_month') }}" color="primary"   :value="$count_month " route="#"/>
 
-                <x-statics label="{{ __('models.price_today') }}" color="primary"   :value="$price_today " route="#"/>
-                <x-statics label="{{ __('models.price_week') }}" color="primary"    :value="$price_week " route="#"/>
-                <x-statics label="{{ __('models.price_month') }}" color="primary"   :value="$price_month " route="#"/>
 
             </div> <!-- end row-->
 

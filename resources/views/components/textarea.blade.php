@@ -1,5 +1,5 @@
 @props([
-    'name' , 'value' => '' , 'label'
+    'name' , 'value' => '' , 'label' , 'type' => ''
 ])
 <label for="{{ $name }}">{{ $label }}</label>
 <textarea
@@ -8,6 +8,7 @@ id="{{ $name }}"
 rows="4"
 {{ $attributes->class([
     'form-control' ,
+    $type ? 'summernote' : ''
 
   ]) }}
 >

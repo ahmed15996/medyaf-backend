@@ -22,16 +22,9 @@ class AuthService
     }
 
     public function register(Request $request , $data){
-        if($request->type == 'email'){
-            $data['type'] = 'email' ;
-            $data['password'] = bcrypt($request->password);
-        }elseif($request->type == 'gmail'){
-           $data['type'] = 'gmail' ;
-           $data['uid']  = $request->uid ;
-        }elseif($request->type == 'apple'){
-            $data['type'] = 'apple' ;
-            $data['uid']  = $request->uid ;
-        }
+
+        $data['type'] = 'email' ;
+        $data['password'] = bcrypt($request->password);
         $data['email_verified_at'] =  now();
         $data['remember_token'] = Str::random(10);
         $user = $this->userRepo->create($data);
@@ -40,19 +33,48 @@ class AuthService
 
 
     public function login(Request $request){
-        if($request->type == 'email'){
-            $user = $this->userRepo->getWhere([ ['type' , 'email'] , ['email' , $request->email] , ['is_active' , 0 ] ])->first();
-            if ($user &&  Hash::check($request->password, $user->password)) {
+            $user = $this->userRepo->getWhere([ ['email' , $request->email] , ['is_active' , 0 ] ])->first();
+            if($user &&  Hash::check($request->password, $user->password)) {
                return $this->userResource($user);
             }else{
-                return $this->ApiResponse(null ,'Email & Password does not match with our record.', 403);
+                return $this->ApiResponse([] ,'Email & Password does not match with our record.', 403);
             }
-        }elseif($request->type == 'gmail'){
-           $user = $this->userRepo->getWhere([ ['type' , 'gmail'] , ['email' , $request->email] , ['is_active' , 0 ] , ['uid' , $request->uid] ])->first();
-           return $user ? $this->userResource($user) : $this->ApiResponse(null ,'Email & Uid does not match with our record.', 403);
+
+    }
+
+    public function login_with_social(Request $request){
+        if($request->type == 'gmail'){
+            $user = $this->userRepo->getWhere([ ['email' , $request->email] , ['uid' , $request->uid] , ['type' , 'gmail'] , ['is_active' , 0 ] ])->first();
+            if($user){
+                return $this->userResource($user) ;
+            }else{
+                $check_email = $this->userRepo->findWhere(['email' => $request->email]);
+                if($check_email){
+                    return $this->ApiResponse([] , 'الايميل موجود مسبقا' , 403);
+                }
+                $data  = $request->only('name' , 'email' , 'uid' , 'type');
+                $data['email_verified_at'] =  now();
+                $data['remember_token'] = Str::random(10);
+                $user = $this->userRepo->create($data);
+                return $this->userResource($user);
+            }
         }elseif($request->type == 'apple'){
-            $user = $this->userRepo->getWhere([ ['type' , 'apple'] , ['email' , $request->email] , ['is_active' , 0 ] , ['uid' , $request->uid] ])->first();
-            return $user ? $this->userResource($user) : $this->ApiResponse(null ,'Email & Uid does not match with our record.', 403);
+            $user = $this->userRepo->getWhere([ ['email' , $request->email] , ['uid' , $request->uid] , ['type' , 'apple'] , ['is_active' , 0 ] ])->first();
+            if($user){
+                return $this->userResource($user) ;
+            }else{
+                $check_email = $this->userRepo->findWhere(['email' => $request->email]);
+                if($check_email){
+                    return $this->ApiResponse([] , 'الايميل موجود مسبقا' , 403);
+                }
+                $data  = $request->only('name' , 'email' , 'uid' , 'type');
+                $data['email_verified_at'] =  now();
+                $data['remember_token'] = Str::random(10);
+                $user = $this->userRepo->create($data);
+                return $this->userResource($user);
+            }
+        }else{
+            return $this->notFoundResponse();
         }
     }
 

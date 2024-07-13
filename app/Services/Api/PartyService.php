@@ -20,13 +20,13 @@ class PartyService
     }
 
      // puy invitations
-    public function add_events(Request $request , $user){
+    public function add_balance(Request $request , $user){
         // puy invitations
         $event = $user->events()->create([
-            'event_id' => $request->event_id
+            'event_id' => $request->package_id
         ]);
 
-        $event_puy = Event::where('id' , $request->event_id)->first();
+        $event_puy = Event::where('id' , $request->package_id)->first();
         $event_puy->update([
            'event_users' => $event_puy->event_users + 1
         ]);
@@ -40,10 +40,21 @@ class PartyService
         return $this->ApiResponse(true , 'data add successfully' , 200);
     }
 
+    public function get_user_balance($user){
+       $events = $user['events']->count();
+       $is_free = $events > 0 ? false : true ;
+
+       $data['is_free'] = $is_free ;
+       $data['invitations-count'] = $user->event ;
+
+       return $this->ApiResponse($data , 'data found' , 200);
+
+    }
+
 
     public function add_party(Request $request, $user){
 
-       
+
         // check count invitations //
         $invitationCheck = $this->check_count_invitations($request, $user);
         if ($invitationCheck !== true) {
@@ -110,7 +121,9 @@ class PartyService
            foreach ($users as $user) {
               $party->users()->create([
                  'phone' => $user->phone ,
-                 'count' => $user->count
+                 'count' => $user->count ,
+                 'name'  => $user->name ,
+                 'sur_name'  => $user->sur_name ,
               ]);
            }
 

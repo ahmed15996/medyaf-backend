@@ -20,8 +20,9 @@ Route::middleware('lang')->group(function () {
 
 
 
-    Route::post('/register' , [AuthController::class , 'register']);
-    Route::post('/login' , [AuthController::class , 'login']);
+    Route::post('/sign-up' , [AuthController::class , 'register']);
+    Route::post('/sign-in' , [AuthController::class , 'login']);
+    Route::post('/sing-in-with-social' , [AuthController::class , 'login_social']);
 
 
 
@@ -40,26 +41,29 @@ Route::middleware('lang')->group(function () {
 
         });
 
-        Route::post('puy-events'           , [PartyController::class , 'puy_events']);
-        Route::post('add-party'            , [PartyController::class , 'add_party']);
-        Route::get('user-statics'          , [PartyController::class , 'user_statics']);
-        Route::get('user-parties'          , [PartyController::class , 'user_parties']);
-        Route::get('party-details/{id}'    , [PartyController::class , 'party_details']);
-        Route::post('update-party/{id}'    , [PartyController::class , 'update_party']);
-        Route::get('delete-party/{id}'     , [PartyController::class , 'delete_party']);
+        // invitation balance
+        Route::post('add-balance'             , [PartyController::class , 'add_balance']);
+        Route::get('get-user-balance'         , [PartyController::class , 'get_user_balance']);
+
+        // invitations
+        Route::post('add-invitation'          , [PartyController::class , 'add_invitation']);
+        Route::get('user-invitations'         , [PartyController::class , 'user_invitations']);
+        Route::get('invitation-details/{id}'  , [PartyController::class , 'invitation_details']);
+        Route::post('update-invitation/{id}'  , [PartyController::class , 'update_invitation']);
+        Route::get('delete-invitation/{id}'   , [PartyController::class , 'delete_invitation']);
 
 
     });
 
     // routes not auth
-    Route::get('boardings'   , [HomeController::class , 'boarding']);
-    Route::get('setting'     , [HomeController::class , 'setting']);
-    Route::get('terms'       , [HomeController::class , 'terms']);
-    Route::get('us'          , [HomeController::class , 'us']);
-    Route::get('questions'   , [HomeController::class , 'questions']);
-    Route::get('countries'   , [HomeController::class , 'countries']);
-    Route::get('events'      , [PartyController::class, 'events']);
-    Route::post('contact-us' , [HomeController::class , 'contact_us']);
+    Route::get('on-bording'        , [HomeController::class , 'boarding']);
+    Route::get('footer'            , [HomeController::class , 'setting']);
+    Route::get('terms'             , [HomeController::class , 'terms']);
+    Route::get('about-us'          , [HomeController::class , 'us']);
+    Route::get('questions'         , [HomeController::class , 'questions']);
+    Route::get('countries'         , [HomeController::class , 'countries']);
+    Route::get('get-all-packages'  , [PartyController::class, 'get_all_packages']);
+    Route::post('contact-us'       , [HomeController::class , 'contact_us']);
 
 
 
@@ -75,6 +79,7 @@ Route::middleware('lang')->group(function () {
 
 
 });
+
 
 
 

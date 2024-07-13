@@ -91,6 +91,7 @@ return [
     'total_invataions'         => 'الاجمالي' ,
     'invataions_used'          => 'الدعوات المستخدمه' ,
     'remaining_invitations'    => 'الدعوات المتبقيه' ,
+    'code'                     => 'كود المناسبه' ,
 
 
      'price'                    => 'السعر' ,

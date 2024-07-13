@@ -40,7 +40,7 @@ trait ApiResponseTrait
     public function notFoundResponse()
     {
 
-        return $this->ApiResponse(null , __('api.not_found') , 404);
+        return $this->ApiResponse([] , __('api.not_found') , 404);
 
     } // end of not found response
 
@@ -51,7 +51,7 @@ trait ApiResponseTrait
 
         if ($validate->fails())
         {
-            return $this->ApiResponse(null , $validate->errors() , 422);
+            return $this->ApiResponse([] , $validate->errors() , 422);
         }
 
     } // end of api validate

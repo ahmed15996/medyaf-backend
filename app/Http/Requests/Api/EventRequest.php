@@ -16,7 +16,7 @@ class EventRequest extends MasterApiRequest
     public function rules(): array
     {
         return [
-            'event_id'  => 'required|exists:events,id' ,
+            'package_id'  => 'required|exists:events,id' ,
         ];
     }
 }

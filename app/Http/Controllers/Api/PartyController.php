@@ -28,46 +28,48 @@ class PartyController extends Controller
        $this->partyService = $partyService ;
     }
 
-    public function events(){
+    public function get_all_packages(){
         $events = $this->eventRepo->getAll();
         return $this->ApiResponse(EventResource::collection($events) , '' , 200);
     }
 
-    public function puy_events(EventRequest $request){
+    public function add_balance(EventRequest $request){
        $user = $this->userRepo->findWhere(['id' => auth()->user()->id]);
-       return $this->partyService->add_events($request , $user);
+       return $this->partyService->add_balance($request , $user);
+    }
+
+    public function get_user_balance(){
+        $user = auth()->user();
+        return $this->partyService->get_user_balance($user);
     }
 
 
 
-    public function add_party(PartyRequest $request){
+    public function add_invitation(PartyRequest $request){
       $user = $this->userRepo->findWhere(['id' => auth()->user()->id]);
       return $this->partyService->add_party($request , $user);
     }
 
-    public function party_details($id){
+    public function invitation_details($id){
       $party = $this->partyRepo->getWhere( [ ['id' , $id] , ['user_id' , auth()->user()->id]] )->first();
       return $party ? $this->ApiResponse(new PartyDetailsResource($party) , '' , 200) : $this->notFoundResponse() ;
     }
 
-    public function update_party(PartyRequest $request , $id){
+    public function update_invitation(PartyRequest $request , $id){
         $party = $this->partyRepo->getWhere( [ ['id' , $id] , ['user_id' , auth()->user()->id]] )->first();
         return $party ? $this->partyService->update_party($request , $party) : $this->notFoundResponse();
 
     }
 
-    public function delete_party($id){
+    public function delete_invitation($id){
        $party = $this->partyRepo->getWhere([ ['id' , $id] , ['user_id' , auth()->user()->id]])->first();
        return $party ? $this->partyService->delete_party($party) :  $this->notFoundResponse();
 
     }
 
-    public function user_statics(){
-      $user = User::with(['parties' , 'events'])->where('id' , auth()->user()->id)->first();
-      return $this->partyService->statics_party($user);
-    }
 
-    public function user_parties(){
+
+    public function user_invitations(){
         $user = User::with(['parties'])->where('id' , auth()->user()->id)->first();
 
         return
@@ -75,14 +77,16 @@ class PartyController extends Controller
             $this->ApiResponse(PartyResource::collection($user['parties']) , '' , 200) :
             $this->ApiResponse([] , '' , 200) ;
         ;
-
-
-
     }
 
-
-
 }
+
+
+
+
+
+
+
 
 
 

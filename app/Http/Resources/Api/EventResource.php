@@ -13,7 +13,7 @@ class EventResource extends JsonResource
         return [
 
             'id'     => $this->id ,
-            'price'  => $this->price ,
+            'price'  => doubleval($this->price) ,
             'count'  => $this->count ,
         ];
     }

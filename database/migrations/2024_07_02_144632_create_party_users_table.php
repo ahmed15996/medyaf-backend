@@ -13,8 +13,10 @@ return new class extends Migration
     {
         Schema::create('party_users', function (Blueprint $table) {
             $table->id();
-            $table->string('phone');
             $table->foreignId('party_id')->references('id')->on('parties')->cascadeOnDelete();
+            $table->string('phone');
+            $table->string('sur_name');
+            $table->string('name');
             $table->integer('count');
             $table->timestamps();
         });

@@ -18,10 +18,8 @@ class RegisterRequest extends MasterApiRequest
         return [
             'name'       => 'required|max:255' ,
             'email'      => 'required|unique:users,email' ,
-            'password'   => 'required_if:type,email' ,
-            'type'       => 'required' ,
-            'uid'        => 'required_if:type,gmail,apple|unique:users,uid' ,
-            'country_id' => 'required_if:type,email' ,
+            'password'   => 'required' ,
+            'country_id' => 'required|exists:countries,id' ,
         ];
     }
 }

@@ -40,8 +40,8 @@
 
                     <x-forms    label="{{ __('models.title_ar') }}" name="title_ar" :value="$us->title_ar"/>
                     <x-forms    label="{{ __('models.title_en') }}" name="title_en" :value="$us->title_en"/>
-                    <x-textarea label="{{ __('models.desc_ar') }}"  name="desc_ar"  :value="$us->desc_ar" />
-                    <x-textarea label="{{ __('models.desc_en') }}"  name="desc_en"  :value="$us->desc_en" />
+                    <x-textarea label="{{ __('models.desc_ar') }}"  name="desc_ar"  :value="$us->desc_ar" type=true/>
+                    <x-textarea label="{{ __('models.desc_en') }}"  name="desc_en"  :value="$us->desc_en" type=true/>
 
 
                     <div class="col-12">

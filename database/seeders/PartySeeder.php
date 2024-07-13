@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Party;
+use App\Models\User;
 use Carbon\Carbon;
 use Faker\Factory;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -16,12 +17,12 @@ class PartySeeder extends Seeder
         $startDate = Carbon::now()->yesterday();
         $fake = Factory::create();
 
-        for ($i=0; $i < 50 ; $i++) {
+        for ($i=0; $i < 500 ; $i++) {
             $date = $startDate->copy()->addDays(rand(1, 7));
             Party::create([
                 'code'       => $fake->unique()->numberBetween(100000 , 999999) ,
                 'name'       => 'المناسبه رقم ' . $i ,
-                'img'        => 'parties/1.png' ,
+                'img'        => 'parties/' . rand(1 , 10) . '.png' ,
                 'date'       => $date ,
                 'time'       => $fake->time() ,
                 'qr_code'    => 1 ,
@@ -38,8 +39,14 @@ class PartySeeder extends Seeder
             $party->users()->create([
                 'phone'  => $fake->phoneNumber() ,
                 'count'  => rand(3 , 8),
+                'name'   => $fake->name ,
+                'sur_name' => 'المكرمه'
             ]);
           }
+
+          $party->user->update([
+             'event' => $party->user->event - count($party->users)
+          ]);
         }
     }
 }

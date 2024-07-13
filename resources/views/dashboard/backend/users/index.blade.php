@@ -19,18 +19,20 @@
                     <div class="row g-4 mb-3">
                        <div class="col-md-6">
                         <div class="custom-controls m-1" style="background-color: #eee; padding: 5px; border-radius: 4px;">
-                            <x-radio label="All" name="fliter_type" value="all"/>
-                            <x-radio label="Email" name="fliter_type" value="email"/>
-                            <x-radio label="Gmail" name="fliter_type" value="gmail"/>
-                            <x-radio label="Apple" name="fliter_type" value="apple"/>
+                            <x-radio label="All" name="fliter_type" value="all"     icon="ri-checkbox-circle-line me-1 align-bottom"/>
+                            <x-radio label="Email" name="fliter_type" value="email" icon="ri-edge-fill"/>
+                            <x-radio label="Gmail" name="fliter_type" value="gmail" icon="ri-google-line"/>
+                            <x-radio label="Apple" name="fliter_type" value="apple" icon="ri-apple-fill"/>
                         </div>
+
 
                        </div>
                        <div class="col-md-6">
+
                         <div  class="custom-controls m-1" style="background-color: #eee; padding: 5px; border-radius: 4px;">
-                            <x-radio label="{{ __('models.all') }}" name="fliter_active" value="all"/>
-                            <x-radio label="{{ __('models.active') }}" name="fliter_active" value="0"/>
-                            <x-radio label="{{ __('models.not_active') }}" name="fliter_active" value="1"/>
+                            <x-radio label="{{ __('models.all') }}" name="fliter_active" value="all" icon="ri-checkbox-circle-line me-1 align-bottom"/>
+                            <x-radio label="{{ __('models.active') }}" name="fliter_active" value="0" icon="ri-checkbox-circle-line me-1 align-bottom"/>
+                            <x-radio label="{{ __('models.not_active') }}" name="fliter_active" value="1" icon="ri-checkbox-circle-line me-1 align-bottom"/>
                         </div>
                     </div>
 

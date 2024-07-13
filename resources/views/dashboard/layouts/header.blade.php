@@ -205,13 +205,13 @@
                         <!-- item-->
                         <h6 class="dropdown-header">Welcome {{ auth('admin')->user()->name }}!</h6>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="pages-profile-settings.html"><span
+                        <a class="dropdown-item" href="{{ route('admin.setting') }}"><span
                                 class="badge bg-success-subtle text-success mt-1 float-end">New</span><i
                                 class="mdi mdi-cog-outline text-muted fs-16 align-middle me-1"></i> <span
-                                class="align-middle">Settings</span></a>
+                                class="align-middle">{{ __('models.setting') }}</span></a>
                         <a class="dropdown-item" href="{{ route('admin.logout') }}"><i
                                 class="mdi mdi-logout text-muted fs-16 align-middle me-1"></i> <span
-                                class="align-middle" data-key="t-logout">Logout</span></a>
+                                class="align-middle" data-key="t-logout">{{ __('models.logout') }}</span></a>
                     </div>
                 </div>
             </div>

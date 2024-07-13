@@ -3,7 +3,7 @@
 ])
 
 
-<div class="col-lg-{{ $col ? $col : 6 }}">
+<div class="col-md-{{ $col ? $col : 6 }}">
     <label class="form-label" for="{{ $name }}">{{ $label }}</label>
     <select class="form-control js-example-basic-multiple" name="{{ $name }}" id="{{ $name }}">
         <option value="">{{ $label }}</option>

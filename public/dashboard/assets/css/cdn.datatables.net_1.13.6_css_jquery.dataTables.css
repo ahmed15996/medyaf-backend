@@ -544,58 +544,7 @@ table.dataTable td {
   padding: 0 1em;
 }
 
-.icon1{
-    background: rgb(75,56,179);
-    color: #fff !important;
-    width: 30px;
-    height: 30px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 8px;
-}
-.icon2{
-    background: rgb(41,156,219);
-    color: #fff !important;
-    width: 30px;
-    height: 30px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 8px;
-}
-.icon3{
-    background: rgb(69,203,133);
-    color: #fff !important;
-    width: 30px;
-    height: 30px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 8px;
-}
-.icon4{
-    background: rgb(240,101,72);
-    color: #fff !important;
-    width: 30px;
-    height: 30px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 8px;
-}
-.icon1:hover {
-    color: #fff !important;
-}
-.icon2:hover {
-    color: #fff !important;
-}
-.icon3:hover {
-    color: #fff !important;
-}
-.icon4:hover {
-    color: #fff !important;
-}
+ 
 .dataTables_wrapper .dataTables_length,
 .dataTables_wrapper .dataTables_filter,
 .dataTables_wrapper .dataTables_info,

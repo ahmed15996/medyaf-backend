@@ -19,7 +19,6 @@ class ContactUsRequest extends MasterApiRequest
 
             'name'   => 'required|max:255' ,
             'email'  => 'required|email' ,
-            'code'   => 'nullable|max:255' ,
             'msg'    => 'required' ,
 
 

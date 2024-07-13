@@ -10,6 +10,7 @@ use App\Http\Controllers\Api\Traits\ApiResponseTrait;
 use App\Http\Requests\Api\ChangePassRequest;
 use App\Http\Requests\Api\ForgetPassRequest;
 use App\Http\Requests\Api\LoginRequest;
+use App\Http\Requests\Api\Loginsocial;
 use App\Http\Requests\Api\UpdateUserRequest;
 use App\Http\Resources\Api\UserResource;
 use App\Services\Api\AuthService;
@@ -27,7 +28,7 @@ class AuthController extends Controller
 
 
     public function register(RegisterRequest $request){
-        $data = $request->except('password', 'email_verified_at', 'remember_token' , 'type' , 'uid');
+        $data = $request->except('password', 'email_verified_at', 'remember_token' , 'type');
        return $this->userService->register($request , $data);
 
     }
@@ -37,6 +38,10 @@ class AuthController extends Controller
     {
 
         return $this->userService->login($request);
+    }
+
+    public function login_social(Loginsocial $request){
+       return $this->userService->login_with_social($request);
     }
 
 

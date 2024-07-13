@@ -17,9 +17,7 @@ class LoginRequest extends MasterApiRequest
     {
         return [
             'email'     => 'required|email' ,
-            'password'  => 'required_if:type,email' ,
-            'uid'       => 'required_if:type,gmail,apple' ,
-            'type'      => 'required'
+            'password'  => 'required' ,
         ];
     }
 }

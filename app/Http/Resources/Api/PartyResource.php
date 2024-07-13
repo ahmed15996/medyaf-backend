@@ -14,6 +14,7 @@ class PartyResource extends JsonResource
         return [
 
             'id'       => $this->id ,
+            'code'     => $this->code ,
             'name'     => $this->name ,
             'img'      => url('storage/' . $this->img) ,
             'lat'      => $this->lat ,

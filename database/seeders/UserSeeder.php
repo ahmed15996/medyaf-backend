@@ -14,7 +14,7 @@ class UserSeeder extends Seeder
     {
         $fake = Factory::create();
 
-        for ($i=0; $i < 10 ; $i++) {
+        for ($i=0; $i < 300 ; $i++) {
             User::create([
                 'name' => $fake->name() ,
                 'email' => $fake->email() ,
@@ -25,8 +25,6 @@ class UserSeeder extends Seeder
                 'email_verified_at' => now() ,
                 'remember_token'=>Str::random(10),
                 'created_at'=>now(),
-
-
             ]);
         }
     }

@@ -19,9 +19,6 @@ return new class extends Migration
             $table->string('instagram')->nullable();
             $table->string('wattsapp')->nullable();
             $table->string('phone')->nullable();
-            $table->double('lat')->nullable()->default(0);
-            $table->double('lng')->nullable()->default(0);
-            $table->string('location')->nullable();
             $table->string('email')->nullable();
             $table->string('gmail')->nullable();
             $table->string('type')->nullable();

@@ -13,13 +13,12 @@ class SettingSeeder extends Seeder
     {
         Setting::create([
 
-            'twitter'         => 'twitter' ,
-            'facebook'        => 'facebook' ,
-            'linkedin'         => 'linkedin' ,
-            'instagram'       => 'instagram' ,
+            'twitter'         => 'https://x.com/Abu_Salah9' ,
+            'facebook'        => 'https://web.facebook.com/groups/415113922769670/?_rdc=1&_rdr' ,
+            'linkedin'         => 'https://www.linkedin.com/company/walaplus/posts/?feedView=all' ,
+            'instagram'       => 'https://www.instagram.com/rassdnewsn/' ,
             'wattsapp'        => '001488452' ,
             'phone'           => '43542525' ,
-            'location'        => 'Egypt' ,
             'email'           => 'email@yahoo.com' ,
             'gmail'           => 'gmail@gmail.com' ,
             'type'            => 'setting' ,

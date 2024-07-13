@@ -1,5 +1,5 @@
 @props([
-    'type' => '' , 'name' , 'value' => '' , 'label' , 'col' => '' 
+    'type' => '' , 'name' , 'value' => '' , 'label' , 'col' => '' , 'class_name' => ''
 ])
 
 
@@ -14,6 +14,7 @@ value="{{ old($name , $value) }}"
 id="{{ $name }}"
 {{ $attributes->class([
 'form-control' ,
+ 'form_control'
 ]) }}
 >
 
