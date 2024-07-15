@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
-use App\Repositories\Sql\EventRepository;
+use App\Models\Event;
 use App\Repositories\Sql\EventUserRepository;
 use App\Repositories\Sql\UserRepository;
 use App\Services\Admin\EventUserService;
@@ -35,7 +35,8 @@ class EventUserController extends Controller
     {
 
         $users = $this->userRepo->getAll();
-        return view('dashboard.backend.event-users.index' , compact('users'));
+        $events = Event::orderByDesc('id')->get();
+        return view('dashboard.backend.event-users.index' , compact('users' , 'events'));
     }
 
 

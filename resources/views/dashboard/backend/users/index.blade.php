@@ -16,9 +16,9 @@
 
             <div class="card-body">
                 <div class="listjs-table" id="customerList">
-                    <div class="row g-4 mb-3">
-                       <div class="col-md-6">
-                        <div class="custom-controls m-1" style="background-color: #eee; padding: 5px; border-radius: 4px;">
+                    <div class="row align-items-end g-4 mb-3">
+                       <div class="col-md-4">
+                        <div class="custom-controls " style="background-color: #eee; padding: 5px; border-radius: 4px;">
                             <x-radio label="All" name="fliter_type" value="all"     icon="ri-checkbox-circle-line me-1 align-bottom"/>
                             <x-radio label="Email" name="fliter_type" value="email" icon="ri-edge-fill"/>
                             <x-radio label="Gmail" name="fliter_type" value="gmail" icon="ri-google-line"/>
@@ -27,17 +27,17 @@
 
 
                        </div>
-                       <div class="col-md-6">
+                       <div class="col-md-4">
 
-                        <div  class="custom-controls m-1" style="background-color: #eee; padding: 5px; border-radius: 4px;">
+                        <div  class="custom-controls " style="background-color: #eee; padding: 5px; border-radius: 4px;">
                             <x-radio label="{{ __('models.all') }}" name="fliter_active" value="all" icon="ri-checkbox-circle-line me-1 align-bottom"/>
                             <x-radio label="{{ __('models.active') }}" name="fliter_active" value="0" icon="ri-checkbox-circle-line me-1 align-bottom"/>
                             <x-radio label="{{ __('models.not_active') }}" name="fliter_active" value="1" icon="ri-checkbox-circle-line me-1 align-bottom"/>
                         </div>
                     </div>
 
-                        <x-select   name="country_id" label="{{ __('models.countries') }}" :options="$countries->pluck('name' , 'id')" type=true/>
-                        <x-order-by name="created_id" label="{{ __('models.order_by') }}"  :options="['asc' => 'الأقدم', 'desc' => 'الأحدث']" />
+                        <x-select   col="2" name="country_id" label="{{ __('models.countries') }}" :options="$countries->pluck('name' , 'id')" type=true/>
+                        <x-order-by col="2" name="created_id" label="{{ __('models.order_by') }}"  :options="['asc' => 'الأقدم', 'desc' => 'الأحدث']" />
 
                     </div>
 

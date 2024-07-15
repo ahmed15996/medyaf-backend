@@ -67,7 +67,6 @@
 
     <script src="{{ asset('dashboard/assets/js/custom-delete.js') }}"></script>
 
-    <script src="{{ asset('dashboard/assets/js/app.js') }}"></script>
     <script>
         var table =  $('#party_table').DataTable({
             processing     : true,

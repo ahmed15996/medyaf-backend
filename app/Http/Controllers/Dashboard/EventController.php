@@ -56,7 +56,6 @@ class EventController extends Controller
     public function show($id)
     {
         $event = $this->eventRepo->findOne($id);
-        return view('dashboard.backend.events.show' , compact('event'));
     }
 
 

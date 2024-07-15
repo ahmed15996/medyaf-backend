@@ -27,7 +27,8 @@ class QuestationServuce
             return $ques->created_at->format('y-m-d');
         })
         ->addColumn('action', 'dashboard.backend.questions.actions')
-        ->rawColumns(['action'])
+        ->addColumn('desc', 'dashboard.backend.questions.desc')
+        ->rawColumns(['action' , 'desc'])
         ->make(true);
     }
 

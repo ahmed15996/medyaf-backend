@@ -3,6 +3,7 @@
 use App\Http\Controllers\Dashboard\AdminController;
 use App\Http\Controllers\Dashboard\AuthController;
 use App\Http\Controllers\Dashboard\BoardaringController;
+use App\Http\Controllers\Dashboard\ContactController;
 use App\Http\Controllers\Dashboard\CountryController;
 use App\Http\Controllers\Dashboard\EventController;
 use App\Http\Controllers\Dashboard\EventUserController;
@@ -86,6 +87,7 @@ Route::prefix('admin')->middleware('localization')->name('admin.')->group(functi
         // parties
         Route::resource('/parties'     ,  PartyController::class);
         Route::get('get-parties'       , [PartyController::class , 'get_parties'])->name('get-parties');
+        Route::get('party-users'       , [PartyController::class , 'get_party_users'])->name('get-party-users');
 
         // boardings
         Route::resource('/boardings'     ,  BoardaringController::class);
@@ -108,6 +110,8 @@ Route::prefix('admin')->middleware('localization')->name('admin.')->group(functi
         Route::put('update-setting' , [StaticController::class , 'update_setting'])->name('update-setting');
 
 
+        Route::get('contact-us'      , [ContactController::class , 'index'])->name('contact-us');
+        Route::get('get-contacts'    , [ContactController::class , 'get_contacts'])->name('get-contacts');
 
 
 

@@ -33,7 +33,8 @@
                             <thead class="table-light">
                                 <tr>
 
-                                    <th class="sort">{{ __('models.title') }}</th>
+                                    <th class="sort">{{ __('models.ask') }}</th>
+                                    <th class="sort">{{ __('models.answer') }}</th>
                                     <th class="sort">{{ __('models.created_at') }}</th>
                                     <th class="sort" >{{ __('models.action') }}</th>
                                 </tr>
@@ -85,6 +86,11 @@
                     },
                 } ,
 
+
+                {
+                    data : 'desc_ar' ,
+                    searchable: false,
+                } ,
 
 
                 {

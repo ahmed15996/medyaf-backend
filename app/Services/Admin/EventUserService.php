@@ -2,7 +2,6 @@
 
 namespace App\Services\Admin;
 
-use App\Models\EventUser;
 use App\Repositories\Sql\EventUserRepository;
 
 class EventUserService
@@ -22,14 +21,14 @@ class EventUserService
 
     public function columns($events){
         return DataTables($events)
-        
+
         ->filterColumn('user', function($query , $keyword) {
             $query->whereRelation('user' , 'id' , $keyword);
         })
         ->filterColumn('event', function($query , $keyword) {
             $query->whereRelation('event' , 'id' , $keyword);
         })
-        ->editColumn('price' , function($event){
+        ->editColumn('event' , function($event){
             return $event->event->price;
         })
 

@@ -18682,7 +18682,7 @@ button#password-addon {
     color: #ffffff;
     font-size: 14px;
     cursor: pointer;
-    border-radius: 30px;
+    border-radius: 5px;
     transition: all 0.4s ease;
     outline: none;
     position: relative;
@@ -18851,7 +18851,7 @@ span.logo-sm img {
     color: #ffffff;
     font-size: 14px;
     cursor: pointer;
-    border-radius: 30px;
+    border-radius: 5px;
     transition: all 0.4s ease;
     outline: none;
     position: relative;
@@ -18946,7 +18946,7 @@ span.logo-sm img {
 
 .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
     border: 1px solid #370b08;
-    background: #370b08;
+    background: #370b08 !important;
     color: #fff !important;
 }
 
@@ -19021,7 +19021,7 @@ li.menu-title {
     width: 100% !important;
     height: 37px;
     padding: 12px;
-    border-radius: 24px !important;
+    border-radius:  5px !important;
     border: 1.5px solid #370b082b !important;
     color: #000 !important;
     outline: none;
@@ -19046,7 +19046,7 @@ div#admin_table_length {
     margin-top: 30px;
 }
 
-.custom-controls.m-1 {
+.custom-controls {
     padding: 12px 15px !important;
     background: #f8f7f7 !important;
     border-radius: 5px !important;
@@ -19150,3 +19150,68 @@ input.custom-control.radio {
     position: relative;
     margin: 0px 10px;
 }
+.table>:not(caption)>*>* {
+     border: 1px solid #e9ebec;
+    border-left: transparent !important;
+    border-right: transparent !important;
+     border-top: transparent !important;
+}
+table.dataTable>thead>tr>th, table.dataTable>thead>tr>td {
+    border-bottom: 1px solid #e9ebec !important;
+    border-top: 1px solid #e9ebec !important;
+    background: #f3f6f9 !important;
+}
+.table>:not(caption)>*>* {
+    color: #000 !important;
+    font-weight: 600;
+}
+.offcanvas-header .btn-close {
+    margin-right: unset !important;
+    margin-left: auto;
+}
+.listjs-table .col-md-4 ,.listjs-table .col-md-2 {
+    padding-left: 5px;
+    padding-right: 5px;
+}
+/*
+.custom-control.custom-control-primary {
+    position: relative;
+    margin: 4px 5px;
+    font-size: 10px;
+    font-weight: bold;
+}
+
+.custom-controls.m-1 {
+    padding: 10px 10px !important;
+    background: #f8f7f7 !important;
+    border-radius: 5px !important;
+} */
+.navbar-menu .navbar-nav .nav-link.active {
+    color: #fff !important;
+    background: #370b08 !important;
+}
+
+.navbar-menu .navbar-nav .menu-dropdown .nav-link.active {
+    color: #370b08  !important;
+    background: #f3f6f9 !important;
+}
+.navbar-menu .navbar-nav .menu-dropdown .nav-link {
+    margin-top:10px !important;
+    cursor: pointer;
+}
+.navbar-menu .navbar-nav .menu-dropdown .nav-link:hover {
+    margin-top:10px !important;
+}
+
+.navbar-menu .navbar-nav .nav-sm .nav-link:before {
+    right: 10px !important;
+    top: 14.5px !important;
+}
+.navbar-menu .navbar-nav .nav-sm .nav-link:hover {
+    transform: unset !important;
+}
+.navbar-menu .navbar-nav .nav-sm .nav-link
+ {
+    padding-right: 28px !important;
+    font-size: 14px;
+ }

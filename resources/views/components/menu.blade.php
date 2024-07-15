@@ -1,9 +1,9 @@
 @props([
-    'name' , 'icon' => ''
+    'name' , 'icon' => '' , 'active' => ''
 ])
 
 <li class="nav-item">
-    <a class="nav-link menu-link" href="#{{ $name }}" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="{{ $name }}">
+    <a class="nav-link {{ $active }} menu-link" href="#{{ $name }}" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="{{ $name }}">
         <i class="{{ $icon }}"></i> <span data-key="t-pages">{{ __('models.' . $name) }}</span>
     </a>
 
@@ -16,3 +16,7 @@
         </ul>
     </div>
 </li>
+
+
+
+

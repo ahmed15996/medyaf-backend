@@ -26,7 +26,8 @@ class BoardService
             return $board->created_at->format('y-m-d');
         })
         ->addColumn('action', 'dashboard.backend.boardings.actions')
-        ->rawColumns(['action'])
+        ->addColumn('desc', 'dashboard.backend.boardings.desc')
+        ->rawColumns(['action' , 'desc'])
         ->make(true);
     }
 

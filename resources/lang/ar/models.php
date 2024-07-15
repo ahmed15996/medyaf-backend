@@ -92,6 +92,9 @@ return [
     'invataions_used'          => 'الدعوات المستخدمه' ,
     'remaining_invitations'    => 'الدعوات المتبقيه' ,
     'code'                     => 'كود المناسبه' ,
+    'sur_name'                 => 'اسم العائله' ,
+    'contact_us'               => 'رسائل التواصل' ,
+    'msg'                      => 'الرساله' ,
 
 
      'price'                    => 'السعر' ,
@@ -130,5 +133,10 @@ return [
     'search_in_map'            => 'بحث في الخريطه' ,
     'location'                 => 'الموقع' ,
     'num'                      => 'الترتيب' ,
+    'see_more'                 => 'المزيد' ,
+    'settings'                 => 'الاعدادات' ,
+    'static_pages'             => 'الصفحات الثابته' ,
+    'ask'                      => 'السؤال' ,
+    'answer'                   => 'الاجابه' ,
 
 ];

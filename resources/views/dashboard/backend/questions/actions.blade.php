@@ -9,7 +9,7 @@
         </x-permission>
 
         <x-permission name="questions-delete">
-            <a href="{{ route('admin.questions.destroy' , $ques->id) }}" data-id="{{ $ques->id }}" class="text-danger d-inline-block remove-item-btn"><i class="ri-delete-bin-5-fill fs-16"></i></a>
+            <a href="{{ route('admin.questions.destroy' , $ques->id) }}" data-id="{{ $ques->id }}" class="text-danger d-inline-block remove-item-btn item-delete"><i class="ri-delete-bin-5-fill fs-16"></i></a>
         </x-permission>
     </div>
 </td>

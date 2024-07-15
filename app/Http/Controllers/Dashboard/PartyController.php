@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
+use App\Models\PartyUser;
 use App\Repositories\Sql\PartyRepository;
 use App\Repositories\Sql\UserRepository;
 use App\Services\Admin\PartyService;
@@ -38,6 +39,13 @@ class PartyController extends Controller
     {
         $party = $this->partyRepo->findOne($id);
         return view('dashboard.backend.parties.show' , compact('party'));
+    }
+
+    public function get_party_users(Request $request){
+        $party_id = $request->query('party_id');
+        $users = PartyUser::query()->where('party_id' , $party_id);
+        return $this->partyService->users_columns($users);
+
     }
 
 

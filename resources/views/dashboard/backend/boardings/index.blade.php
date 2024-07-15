@@ -34,6 +34,7 @@
                                 <tr>
 
                                     <th class="sort">{{ __('models.title') }}</th>
+                                    <th class="sort">{{ __('models.desc') }}</th>
                                     <th class="sort">{{ __('models.img') }}</th>
                                     <th class="sort">{{ __('models.created_at') }}</th>
                                     <th class="sort" >{{ __('models.action') }}</th>
@@ -84,6 +85,15 @@
                     render: function (data, type, full, meta) {
                         return  data ;
                     },
+                } ,
+
+                {
+                    data : 'desc' ,
+                    render: function (data, type, full, meta) {
+                        return  data ;
+                    },
+                    searchable: false,
+
                 } ,
 
                 {

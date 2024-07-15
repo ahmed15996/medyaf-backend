@@ -1,20 +1,6 @@
 <?php
 
-use App\Jobs\SendMultiMail;
-use App\Mail\SendMailMarkting;
-// use Stevebauman\Location\Facades\Location;
-use Illuminate\Support\Facades\Mail;
-use App\Mail\WeHelp;
-use App\Models\Notification;
-use App\Servicies\Notify;
-use Carbon\Carbon;
-use AmrShawky\LaravelCurrency\Facade\Currency;
-use App\Jobs\SendEmailGifts;
-use App\Jobs\sendMailSubscribe;
-use App\Mail\BondMail;
-use Illuminate\Http\Request;
-use Twilio\Rest\Client;
-use Illuminate\Support\Facades\App;
+
 
 /*curr
 |--------------------------------------------------------------------------
@@ -26,22 +12,23 @@ use Illuminate\Support\Facades\App;
 |
 */
 
-function isActiveRoute($route, $output = "active"){
+function isActiveRoute($route, $output = "active") {
     if (\Route::currentRouteName() == $route) return $output;
+    return '';
 }
 
-function areActiveRoutes(Array $routes, $output = "active show-sub"){
-
-    foreach ($routes as $route){
+function areActiveRoutes(Array $routes, $output = "active show-sub") {
+    foreach ($routes as $route) {
         if (\Route::currentRouteName() == $route) return $output;
     }
+    return '';
 }
 
-function areActiveMainRoutes(Array $routes, $output = "active"){
-
-    foreach ($routes as $route){
+function areActiveMainRoutes(Array $routes, $output = "active") {
+    foreach ($routes as $route) {
         if (\Route::currentRouteName() == $route) return $output;
     }
+    return '';
 }
 
 

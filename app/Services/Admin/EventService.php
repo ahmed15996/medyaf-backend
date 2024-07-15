@@ -19,7 +19,7 @@ class EventService
 
     public function get_events($request){
 
-        $events = Event::query()->with(['users']);
+        $events = Event::query();
         orderById($request , $events , 'order_by' , 'id');
         if ($request->has('order_price') && $request->order_price != '') {
             $events->orderBy('price', $request->order_price);

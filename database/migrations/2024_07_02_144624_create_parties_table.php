@@ -23,6 +23,13 @@ return new class extends Migration
             $table->double('lng')->nullable()->default(0);
             $table->string('location')->nullable();
             $table->foreignId('user_id')->references('id')->on('users')->cascadeOnDelete();
+            $table->integer('attendance_confirmed')->default(0);
+            $table->integer('scanned')->default(0);
+            $table->integer('msg')->default(0);
+            $table->integer('waiting')->default(0);
+            $table->integer('transmission_failure')->default(0);
+            $table->integer('apology')->default(0);
+            $table->integer('not_sent')->default(0);
             $table->timestamps();
         });
     }

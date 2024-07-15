@@ -83,29 +83,38 @@
         </div>
         <!--end card-->
         <div class="card mb-3">
+            <div class="d-grid gap-2" >
+                <a href="" class="btn btn-success waves-effect waves-light btn-block add-input-value-color">{{ __('models.party_users') }}</a>
+            </div>
             <div class="card-body">
-                <div class="d-flex mb-3">
-                    <h6 class="card-title mb-0 flex-grow-1">{{ __('models.party_users') }}</h6>
+                <div class="listjs-table" id="customerList">
+                    <div class="row g-4 mb-3">
+
+                    </div>
+
+                    <div class="table-responsive table-card mt-3 mb-1">
+                        <table class="table align-middle table-nowrap" id="party_users_table">
+                            <thead class="table-light">
+                                <tr>
+                                    <th class="sort">{{ __('models.name') }}</th>
+                                    <th class="sort">{{ __('models.sur_name') }}</th>
+                                    <th class="sort">{{ __('models.phone') }}</th>
+                                    <th class="sort">{{ __('models.count') }}</th>
+                                </tr>
+                            </thead>
+                            <tbody class="list form-check-all">
+
+
+                            </tbody>
+                        </table>
+
+
+
+
+
 
                 </div>
-                <ul class="list-unstyled vstack gap-3 mb-0">
-                  @foreach ($party['users'] as $user)
-                        <li>
-                            <div class="d-flex align-items-center">
-                                <div class="flex-shrink-0">
-                                    <img src="{{ asset('storage/admins/1.png')}}" alt="" class="avatar-xs rounded-circle shadow">
-                                </div>
-                                <div class="flex-grow-1 ms-2">
-                                    <h6 class="mb-1">{{ $user->phone }}</a></h6>
-                                    <p class="text-muted mb-0">{{ $user->count }}</p>
-                                </div>
-
-                            </div>
-                        </li>
-                  @endforeach
-
-                </ul>
-            </div>
+            </div><!-- end card -->
         </div>
         <!--end card-->
 
@@ -132,7 +141,66 @@
 
 
 @section('js')
-<script src="https://cdn.jsdelivr.net/npm/lity@2.4.1/dist/lity.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lity@2.4.1/dist/lity.min.js"></script>
+
+    <script>
+        var table =  $('#party_users_table').DataTable({
+            processing     : true,
+            serverSide     : true ,
+            ordering       : false ,
+            iDisplayLength : 10 ,
+            lengthMenu     : [
+                    [10 , 50 , 100 ,  -1] ,
+                    [10 , 50 , 100 ,  'All'] ,
+            ] ,
+            ajax: {
+                url: "{{ route('admin.get-party-users') }}",
+                type: "GET",
+                data: {
+                    party_id: {{ $party->id }}
+                }
+            },
+            columns: [
+
+                {
+                    data : 'name' ,
+                    render: function (data, type, full, meta) {
+                        return  data ;
+                    },
+                } ,
+
+
+
+                {
+                    data : 'sur_name' ,
+                    render: function (data, type, full, meta) {
+                        return  data ;
+                    },
+                } ,
+
+                {
+                    data : 'phone' ,
+                    render: function (data, type, full, meta) {
+                        return  data ;
+                    },
+                } ,
+
+                {
+                    data : 'count' ,
+                    render: function (data, type, full, meta) {
+                        return  data ;
+                    },
+                } ,
+
+
+
+            ]
+        });
+
+
+
+    </script>
+
 @include('dashboard.backend.parties.mab')
 
 @endsection

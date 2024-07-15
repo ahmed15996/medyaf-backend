@@ -27,10 +27,10 @@
                         </x-permission>
 
 
-                        <x-order-by name="created_id" label="{{ __('models.order_by') }}" :options="['asc' => 'الأقدم', 'desc' => 'الأحدث']" />
-                        <x-order-by name="price" label="{{ __('models.price') }}"         :options="['asc' => 'الأقل', 'desc' => 'الأعلي']" />
-                        <x-order-by name="count" label="{{ __('models.count') }}"         :options="['asc' => 'الأقل', 'desc' => 'الأكبر']" />
-                        <x-order-by name="user_events" label="{{ __('models.package') }}" :options="['asc' => 'الاقل استخداما', 'desc' => 'الاكثر استخداما']" />
+                        <x-order-by col="3" name="created_id" label="{{ __('models.order_by') }}" :options="['asc' => 'الأقدم', 'desc' => 'الأحدث']" />
+                        <x-order-by col="3" name="price" label="{{ __('models.price') }}"         :options="['asc' => 'الأقل', 'desc' => 'الأعلي']" />
+                        <x-order-by col="3" name="count" label="{{ __('models.count') }}"         :options="['asc' => 'الأقل', 'desc' => 'الأكبر']" />
+                        <x-order-by col="3" name="user_events" label="{{ __('models.package') }}" :options="['asc' => 'الاقل استخداما', 'desc' => 'الاكثر استخداما']" />
 
                     </div>
 

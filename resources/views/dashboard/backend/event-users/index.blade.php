@@ -18,6 +18,7 @@
                 <div class="listjs-table" id="customerList">
                     <div class="row g-4 mb-3">
                         <x-select col="6" name="user_id" label="{{ __('models.users') }}" :options="$users->pluck('name' , 'id')" type=true/>
+                        <x-select col="6" name="event_id" label="{{ __('models.events') }}" :options="$events->pluck('price' , 'id')" type=true/>
 
 
 
@@ -79,7 +80,7 @@
                 } ,
 
                 {
-                    data : 'price' ,
+                    data : 'event' ,
                     render: function (data, type, full, meta) {
                         return  data ;
                     },
@@ -90,6 +91,7 @@
                     render: function (data, type, full, meta) {
                         return  data ;
                     },
+                    searchable: false
                 } ,
 
 

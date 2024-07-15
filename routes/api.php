@@ -53,6 +53,7 @@ Route::middleware('lang')->group(function () {
         Route::get('delete-invitation/{id}'   , [PartyController::class , 'delete_invitation']);
 
 
+
     });
 
     // routes not auth

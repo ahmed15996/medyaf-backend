@@ -67,19 +67,20 @@ class PartyController extends Controller
 
     }
 
-
-
     public function user_invitations(){
         $user = User::with(['parties'])->where('id' , auth()->user()->id)->first();
 
         return
             $user['parties']->count() > 0 ?
-            $this->ApiResponse(PartyResource::collection($user['parties']) , '' , 200) :
+            $this->ApiResponse(PartyResource::collection($user['parties'])->sortByDesc('id') , '' , 200) :
             $this->ApiResponse([] , '' , 200) ;
         ;
     }
 
+
+
 }
+
 
 
 

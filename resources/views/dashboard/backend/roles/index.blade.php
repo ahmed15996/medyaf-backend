@@ -32,7 +32,7 @@
                     </div>
 
                     <div class="table-responsive table-card mt-3 mb-1">
-                        <table class="table align-middle table-nowrap" id="admin_table">
+                        <table class="table align-middle table-nowrap" id="role_table">
                             <thead class="table-light">
                                 <tr>
 
@@ -67,7 +67,7 @@
     <script src="{{ asset('dashboard/assets/js/custom-delete.js') }}"></script>
 
     <script>
-        $('#admin_table').DataTable({
+        $('#role_table').DataTable({
         processing     : true,
         serverSide     : true ,
         ordering       : false ,

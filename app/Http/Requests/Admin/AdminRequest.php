@@ -18,7 +18,7 @@ class AdminRequest extends FormRequest
         return [
             'name'       => 'required|max:255' ,
             'img'        => $this->method() == 'POSt' ? 'required|mimes:png,jpg,jpeg'  : 'nullable|mimes:png,jpg,jpeg',
-            'email'      => $this->method() == 'POSt' ? 'required|unique:admins,email' : 'required|unique:admins,email,' . $this->id,
+            'email'      => $this->method() == 'POSt' ? 'required|email|unique:admins,email' : 'required|email|unique:admins,email,' . $this->id,
             'password'   => $this->method() == "POST" ?  'required' : 'nullable'  ,
             'role_id'    => 'required' ,
             'img'        => $this->method() == 'POST' ?  'required|mimes:png,jpg,png'  : 'nullable|mimes:png,jpg,jpeg'

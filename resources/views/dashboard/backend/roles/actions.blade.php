@@ -10,7 +10,7 @@
         </x-permission>
 
         <x-permission name="roles-delete">
-            <a href="{{ route('admin.roles.destroy' , $role->id) }}" data-id="{{ $role->id }}" class="text-danger d-inline-block remove-item-btn"><i class="ri-delete-bin-5-fill fs-16"></i></a>
+            <a href="{{ route('admin.roles.destroy' , $role->id) }}" data-id="{{ $role->id }}" class="text-danger d-inline-block remove-item-btn item-delete"><i class="ri-delete-bin-5-fill fs-16"></i></a>
         </x-permission>
 
     </div>

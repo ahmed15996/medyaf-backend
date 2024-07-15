@@ -20,7 +20,7 @@ class PartyService
         if($request->has('date') && $request->date != '') {
             $parties->whereDate('date', $request->date);
         }
-       
+
         orderById($request , $parties);
         return $this->columns($parties);
     }
@@ -38,6 +38,11 @@ class PartyService
         })
         ->addColumn('action', 'dashboard.backend.parties.actions')
         ->rawColumns(['action'])
+        ->make(true);
+    }
+
+    public function users_columns($users){
+        return DataTables($users)
         ->make(true);
     }
 

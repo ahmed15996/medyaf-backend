@@ -28,6 +28,13 @@ class PartySeeder extends Seeder
                 'qr_code'    => 1 ,
                 'location'   => 'egypt' ,
                 'user_id'    => rand(1 , 9) ,
+                'attendance_confirmed' => 5 ,
+                'scanned'              => 5 ,
+                'msg'                  => 5 ,
+                'waiting'              => 5 ,
+                'transmission_failure' => 5 ,
+                'apology'              => 5 ,
+                'not_sent'             => 5 ,
                 'created_at' => now()
             ]);
         }
@@ -37,10 +44,10 @@ class PartySeeder extends Seeder
         foreach ($parties as $party) {
           for ($i=0; $i < rand(4 , 20); $i++) {
             $party->users()->create([
-                'phone'  => $fake->phoneNumber() ,
-                'count'  => rand(3 , 8),
-                'name'   => $fake->name ,
-                'sur_name' => 'المكرمه'
+                'phone'               => $fake->phoneNumber() ,
+                'count'               => rand(3 , 8),
+                'name'                => $fake->name ,
+                'sur_name'             => 'المكرمه' ,
             ]);
           }
 

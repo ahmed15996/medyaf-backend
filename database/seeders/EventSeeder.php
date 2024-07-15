@@ -24,13 +24,17 @@ class EventSeeder extends Seeder
           $events = Event::all();
          foreach ($users as $user) {
            foreach ($events as $event) {
-             for ($i=1; $i < 5 ; $i++) {
+             for ($i=1; $i < rand( 2 , 5) ; $i++) {
                 $event_user =  $event->users()->create([
                   'user_id' => $user->id
                 ]);
 
                 $event_user->user->update([
                     'event' => $event_user->user->event + $event_user->event->count
+                ]) ;
+
+                $event->update([
+                    'event_users' => $event->event_users + 1
                 ]) ;
              }
            }
