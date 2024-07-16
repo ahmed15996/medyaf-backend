@@ -73,6 +73,7 @@ Route::prefix('admin')->middleware('localization')->name('admin.')->group(functi
         Route::get('get-user-parties'       , [UserController::class , 'get_user_parties'])->name('get-user-parties');
         Route::get('user-notify/{id}'       , [UserController::class , 'user_notify'])->name('user-notify');
         Route::post('send-user-notify/{id}' , [UserController::class , 'send_user_notify'])->name('send-user-notify');
+        Route::get('export-users'           , [UserController::class , 'export'])->name('export-users');
 
         // countries
         Route::resource('/countries' , CountryController::class);

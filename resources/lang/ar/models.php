@@ -100,7 +100,7 @@ return [
     'events_count'             => 'عدد مرات الشراء' ,
     'send_notify_successfully' => 'تم الارسال بنجاح' ,
     'send_notify'              => 'ارسال اشعار' ,
-
+    'export'                   => 'تصدير البيانات' ,
     'send_notifications'        => 'ارسال الاشعارات' ,
      'price'                    => 'السعر' ,
      'count'                    => 'العدد' ,

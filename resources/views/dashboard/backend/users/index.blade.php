@@ -17,6 +17,10 @@
             <div class="card-body">
                 <div class="listjs-table" id="customerList">
                     <div class="row align-items-end g-4 mb-3">
+                        <div class="d-flex flex-wrap align-items-start gap-2">
+                            <a class="btn btn-info" href="{{ route('admin.export-users') }}"><i class="ri-file-download-line align-bottom me-1"></i>{{ __('models.export') }}</a>
+                        </div>
+
                        <div class="col-md-4">
                         <div class="custom-controls " style="background-color: #eee; padding: 5px; border-radius: 4px;">
                             <x-radio label="All" name="fliter_type" value="all"     icon="ri-checkbox-circle-line me-1 align-bottom"/>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Dashboard;
 
+use App\Exports\ExportUser;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\SendNotifyRequest;
 use App\Models\EventUser;
@@ -13,6 +14,7 @@ use App\Repositories\Sql\UserRepository;
 use App\Services\Admin\UserService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Maatwebsite\Excel\Facades\Excel;
 
 class UserController extends Controller
 {
@@ -93,11 +95,12 @@ class UserController extends Controller
         $user = $this->userRepo->findOne($id);
         $this->userService->send_notify($request , $user);
         return redirect(route('admin.users.index'))->with('success', __('models.send_notify_successfully'));
-
     }
 
-
-
+    public function export()
+    {
+        return Excel::download(new ExportUser, 'users.xlsx');
+    }
 
 
 
