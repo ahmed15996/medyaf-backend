@@ -57,9 +57,9 @@ class HomeController extends Controller
        return $this->ApiResponse(StaticResource::collection($questions) , '' , 200);
     }
 
-    public function countries(){
-       $countries = $this->countryRepo->getAll();
-       return $this->ApiResponse(CountryResource::collection($countries) , '' , 200);
+    public function cities(){
+       $cities = $this->countryRepo->getAll();
+       return $this->ApiResponse(CountryResource::collection($cities) , '' , 200);
     }
 
     public function contact_us(ContactUsRequest $request){

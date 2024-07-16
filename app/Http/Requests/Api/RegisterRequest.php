@@ -20,6 +20,8 @@ class RegisterRequest extends MasterApiRequest
             'email'      => 'required|unique:users,email' ,
             'password'   => 'required' ,
             'country_id' => 'required|exists:countries,id' ,
+            'phone_type' => 'required' ,
+            'device_key' => 'required' ,
         ];
     }
 }

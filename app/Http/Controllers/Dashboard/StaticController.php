@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\admin\SettingRequest;
+use App\Http\Requests\Admin\SendNotifyRequest;
+use App\Http\Requests\Admin\SettingRequest;
 use App\Http\Requests\Admin\StaticRequest;
+use App\Models\User;
 use App\Repositories\Sql\SettingsRepository;
 use App\Repositories\Sql\StaticPageRepository;
 
@@ -57,5 +59,22 @@ class StaticController extends Controller
         $data = $request->except('1');
         $setting->update($data);
         return redirect()->route('admin.setting')->with('success', 'تم تعديل البيانات بنجاح');
+    }
+
+    public function page_notification(){
+        return view('dashboard.backend.send-notifications');
+    }
+
+    public function send_notifications(SendNotifyRequest $request){
+        $users = User::get();
+
+        $userTokens = [] ;
+
+        foreach ($users as $user) {
+           $userTokens[] = $user->device_key;
+        }
+        sendFCMNotification($request->title , $request->desc , $userTokens, 'admin' , 'user');
+        return redirect()->route('admin.page-notification')->with('success', 'تم ارسال الاشعارات بنجاح');
+
     }
 }

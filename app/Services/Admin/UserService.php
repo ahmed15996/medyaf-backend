@@ -84,5 +84,14 @@ class UserService
         ->make(true);
     }
 
+    public function send_notify($request , $user){
+
+         if($user){
+             $userToken = [];
+             $userToken[] = $user->device_key;
+             sendFCMNotification($request->title , $request->desc , $userToken , 'admin' , 'user');
+         }
+     }
+
 
 }

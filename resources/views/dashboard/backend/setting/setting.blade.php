@@ -46,6 +46,8 @@
 
                     <x-forms label="{{ __('models.wattsapp') }}"  name="wattsapp" :value="$setting->wattsapp" type="number"/>
                     <x-forms label="{{ __('models.phone') }}"     name="phone" :value="$setting->phone" type="number"/>
+                    <x-forms label="{{ __('models.title') }}"     name="title" :value="$setting->title" />
+                    <x-textarea label="{{ __('models.desc') }}"  name="desc"  :value="$setting ? $setting->desc : '' " />
 
 
 

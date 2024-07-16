@@ -21,6 +21,8 @@ return new class extends Migration
             $table->string('phone')->nullable();
             $table->string('email')->nullable();
             $table->string('gmail')->nullable();
+            $table->string('title')->nullable();
+            $table->text('desc')->nullable();
             $table->string('type')->nullable();
             $table->timestamps();
         });

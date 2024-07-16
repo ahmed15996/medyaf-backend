@@ -24,6 +24,9 @@ class HomeController extends Controller
         $startMonth = Carbon::now()->startOfMonth();
         $endMonth = Carbon::now()->endOfMonth();
 
+        $start_year = Carbon::now()->startOfYear();
+        $end_year = Carbon::now()->endOfYear();
+
 
         $roles     = Role::count();
         $admins    = Admin::count();
@@ -31,10 +34,26 @@ class HomeController extends Controller
         $countries = Country::count();
         $events    = Event::count();
         $parties   = Party::count();
-        $event_users = EventUser::count();
-        $parties_today = Party::whereBetween('date', [$startDate , $endDate ])->get()->take(10);
 
-        return view('dashboard.home' , compact('roles' , 'admins' , 'users' , 'countries' , 'events' , 'parties' , 'parties_today'));
+
+        $apple_users = (round(User::where('type', 'apple')->count() / $users, 2)) * 100;
+        $gmail_users = (round(User::where('type', 'gmail')->count() / $users, 2)) * 100;
+        $email_users = (round(User::where('type', 'email')->count() / $users, 2)) * 100;
+
+
+
+
+
+        $iPhone_users = User::where('phone_type', 'iPhone')->count();
+        $android_users = User::where('phone_type', 'android')->count();
+
+
+        $top_packages = Event::orderByDesc('event_users')->take(7)->get();
+        $top_users = User::withCount('events')->orderByDesc('events_count')->take(7)->get();
+
+        $parties_today = Party::whereBetween('date', [$startDate , $endDate ])->take(15)->get();
+
+        return view('dashboard.home' , compact('roles' , 'admins' , 'users' , 'countries' , 'events' , 'parties' , 'parties_today' , 'email_users' , 'apple_users' , 'gmail_users' , 'iPhone_users' , 'android_users' , 'top_packages' , 'top_users'));
     }
 
 

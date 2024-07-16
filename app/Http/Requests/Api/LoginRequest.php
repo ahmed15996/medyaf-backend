@@ -18,6 +18,7 @@ class LoginRequest extends MasterApiRequest
         return [
             'email'     => 'required|email' ,
             'password'  => 'required' ,
+            'device_key' => 'required'
         ];
     }
 }

@@ -41,6 +41,7 @@ class AuthController extends Controller
     }
 
     public function login_social(Loginsocial $request){
+       
        return $this->userService->login_with_social($request);
     }
 

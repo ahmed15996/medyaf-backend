@@ -18,7 +18,6 @@ return [
             'users'          => 'c,r,u,d',
             'countries'      => 'c,r,u,d',
             'settings'       => 'c,r,u,d',
-            'static_pages'   => 'c,r,u,d',
             'boardings'      => 'c,r,u,d',
             'events'         => 'c,r,u,d',
             'parties'        => 'c,r,u,d',

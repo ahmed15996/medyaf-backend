@@ -63,10 +63,10 @@ return [
     'users'                   => 'المستخدمين' ,
     'user_type'              => 'نوع التسجيل' ,
     'uid'                    => 'الرقم التسلسلي' ,
-    'events'                 => 'عدد الدعوات' ,
     'is_active'               => 'تفعيل الحساب' ,
+    'phone_type'               => 'نوع التليفون' ,
 
-    'events'                   => 'الدعوات' ,
+    'events'                   => 'باقه الدعوات' ,
     'add_event'                => 'اضافه دعوه' ,
     'edit_event'               => 'تعديل بيانات الدعوه' ,
 
@@ -92,11 +92,16 @@ return [
     'invataions_used'          => 'الدعوات المستخدمه' ,
     'remaining_invitations'    => 'الدعوات المتبقيه' ,
     'code'                     => 'كود المناسبه' ,
-    'sur_name'                 => 'اسم العائله' ,
+    'sur_name'                 => 'اللقب' ,
     'contact_us'               => 'رسائل التواصل' ,
     'msg'                      => 'الرساله' ,
+    'top_events'               => 'اعلي باقات استخداما' ,
+    'top_users'                => 'المستخدمين الاكثر شراءا للباقات' ,
+    'events_count'             => 'عدد مرات الشراء' ,
+    'send_notify_successfully' => 'تم الارسال بنجاح' ,
+    'send_notify'              => 'ارسال اشعار' ,
 
-
+    'send_notifications'        => 'ارسال الاشعارات' ,
      'price'                    => 'السعر' ,
      'count'                    => 'العدد' ,
      'parties'                  => 'المناسبات' ,

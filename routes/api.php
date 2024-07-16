@@ -62,7 +62,7 @@ Route::middleware('lang')->group(function () {
     Route::get('terms'             , [HomeController::class , 'terms']);
     Route::get('about-us'          , [HomeController::class , 'us']);
     Route::get('questions'         , [HomeController::class , 'questions']);
-    Route::get('countries'         , [HomeController::class , 'countries']);
+    Route::get('cities'            , [HomeController::class , 'cities']);
     Route::get('get-all-packages'  , [PartyController::class, 'get_all_packages']);
     Route::post('contact-us'       , [HomeController::class , 'contact_us']);
 

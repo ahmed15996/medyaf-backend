@@ -4,6 +4,7 @@ namespace App\Services\Api;
 
 use App\Http\Controllers\Api\Traits\ApiResponseTrait;
 use App\Models\Event;
+use App\Models\Setting;
 use App\Repositories\Sql\PartyRepository;
 use Faker\Factory;
 use Illuminate\Http\Request;
@@ -34,8 +35,10 @@ class PartyService
 
         // user has two free invitations in addition to the invitations he purchased
         $user->update([
-        'event' => $user->event + $event->event->count
+         'event' => $user->event + $event->event->count
         ]);
+
+        $this->send_notify($user);
 
         return $this->ApiResponse(true , 'data add successfully' , 200);
     }
@@ -192,6 +195,23 @@ class PartyService
         $party->users()->delete();
         $party->delete();
         return $this->ApiResponse(true , 'party delete successfully' , 200);
+    }
+
+
+    public function send_notify($user){
+
+       $setting = Setting::where( 'type' , 'setting')->first();
+
+
+        $title = $setting->title ;
+        $desc  = $setting->desc ;
+
+
+        if($user){
+            $userToken = [];
+            $userToken[] = $user->device_key;
+            sendFCMNotification($title , $desc , $userToken , 'admin' , 'user');
+        }
     }
 
 

@@ -23,6 +23,8 @@ class CreateUsersTable extends Migration
             $table->enum('type' , ['email' , 'gmail' , 'apple']);
             $table->string('uid')->nullable();
             $table->foreignId('country_id')->nullable()->references('id')->on('countries')->cascadeOnDelete();
+            $table->enum('phone_type' , ['iPhone' , 'android']);
+            $table->string('device_key')->nullable();
             $table->integer('event')->default(2);
             $table->rememberToken();
             $table->timestamps();

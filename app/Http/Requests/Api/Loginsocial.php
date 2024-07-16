@@ -17,12 +17,12 @@ class Loginsocial extends MasterApiRequest
     {
         return [
 
-           'name' => 'required' ,
-           'email' => 'required' ,
-           'type' => 'required' ,
-           'uid' => 'required' ,
-
-
+           'name'       => 'required' ,
+           'email'      => 'required' ,
+           'type'       => 'required' ,
+           'uid'        => 'required' ,
+           'device_key' => 'required' ,
+           'phone_type'  => 'required' ,
         ];
     }
 }

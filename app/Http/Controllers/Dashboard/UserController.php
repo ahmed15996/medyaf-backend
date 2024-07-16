@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\SendNotifyRequest;
 use App\Models\EventUser;
 use App\Models\User;
 use App\Repositories\Sql\CountryRepository;
@@ -46,7 +47,7 @@ class UserController extends Controller
     }
 
     public function show($id){
-        $user = User::with(['parties' , 'events'])->where('id' , auth()->user()->id)->first();
+        $user = User::with(['parties' , 'events'])->where('id' , $id)->first();
         return view('dashboard.backend.users.show' , compact('user'));
     }
 
@@ -81,6 +82,18 @@ class UserController extends Controller
         $user_id = $request->query('user_id');
         $parties =  $this->partyRepo->query()->where('user_id' , $user_id);
         return $this->userService->get_parties($parties);
+    }
+
+    public function user_notify($id){
+      $user = $this->userRepo->findOne($id);
+      return view('dashboard.backend.users.send-notify' , compact('user'));
+    }
+
+    public function send_user_notify(SendNotifyRequest $request , $id){
+        $user = $this->userRepo->findOne($id);
+        $this->userService->send_notify($request , $user);
+        return redirect(route('admin.users.index'))->with('success', __('models.send_notify_successfully'));
+
     }
 
 

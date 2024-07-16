@@ -98,21 +98,21 @@
                 </x-permission>
 
 
-
+                <x-menu name="send_notifications" icon=" ri-notification-2-fill" active="{{ areActiveRoutes(['admin.page-notification']) }}">
+                    <x-nav-item route="{{ route('admin.page-notification') }}" label="{{ __('models.send_notifications') }}" nav_link="{{ areActiveRoutes(['admin.page-notification']) }}"/>
+                </x-menu>
 
 
 
                 {{--  static  --}}
-                <x-permission name="static_pages-read">
-                    <x-menu name="static" icon="ri-settings-4-fill" active="{{ areActiveRoutes(['admin.questions.index' , 'admin.boardings.index' , 'admin.us' , 'admin.terms' , 'admin.setting' , 'admin.contact-us' ]) }}">
-                        <x-nav-item route="{{ route('admin.questions.index') }}" label="{{ __('models.questions') }}" nav_link="{{ areActiveRoutes(['admin.questions.index']) }}"/>
-                        <x-nav-item route="{{ route('admin.boardings.index') }}" label="{{ __('models.static') }}" nav_link="{{ areActiveRoutes(['admin.boardings.index']) }}"/>
-                        <x-nav-item route="{{ route('admin.us') }}" label="{{ __('models.us') }}" nav_link="{{ areActiveRoutes(['admin.us']) }}"/>
-                        <x-nav-item route="{{ route('admin.terms') }}" label="{{ __('models.terms') }}" nav_link="{{ areActiveRoutes(['admin.terms']) }}"/>
-                        <x-nav-item route="{{ route('admin.setting') }}" label="{{ __('models.setting') }}" nav_link="{{ areActiveRoutes(['admin.setting']) }}"/>
-                        <x-nav-item route="{{ route('admin.contact-us') }}" label="{{ __('models.contact_us') }}" nav_link="{{ areActiveRoutes(['admin.contact-us']) }}"/>
-                    </x-menu>
-                </x-permission>
+                <x-menu name="static" icon="ri-settings-4-fill" active="{{ areActiveRoutes(['admin.questions.index' , 'admin.boardings.index' , 'admin.us' , 'admin.terms' , 'admin.setting' , 'admin.contact-us' ]) }}">
+                    <x-nav-item route="{{ route('admin.questions.index') }}" label="{{ __('models.questions') }}" nav_link="{{ areActiveRoutes(['admin.questions.index']) }}"/>
+                    <x-nav-item route="{{ route('admin.boardings.index') }}" label="{{ __('models.static') }}" nav_link="{{ areActiveRoutes(['admin.boardings.index']) }}"/>
+                    <x-nav-item route="{{ route('admin.us') }}" label="{{ __('models.us') }}" nav_link="{{ areActiveRoutes(['admin.us']) }}"/>
+                    <x-nav-item route="{{ route('admin.terms') }}" label="{{ __('models.terms') }}" nav_link="{{ areActiveRoutes(['admin.terms']) }}"/>
+                    <x-nav-item route="{{ route('admin.setting') }}" label="{{ __('models.setting') }}" nav_link="{{ areActiveRoutes(['admin.setting']) }}"/>
+                    <x-nav-item route="{{ route('admin.contact-us') }}" label="{{ __('models.contact_us') }}" nav_link="{{ areActiveRoutes(['admin.contact-us']) }}"/>
+                </x-menu>
 
 
 

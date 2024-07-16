@@ -31,7 +31,10 @@ use Illuminate\Support\Facades\Route;
 
 
 
-
+Route::get('/opt', function () {
+    Artisan::call('optimize');
+    return 0;
+});
 
 Route::get('language/{locale}', function ($locale) {
     app()->setLocale($locale);
@@ -63,11 +66,13 @@ Route::prefix('admin')->middleware('localization')->name('admin.')->group(functi
         Route::get('get-admin' , [AdminController::class , 'get_admins'])->name('get-admins');
 
         // users
-        Route::resource('/users' , UserController::class);
-        Route::get('get-users'   , [UserController::class , 'get_users'])->name('get-users');
-        Route::get('/changeActiveUser', [UserController::class , 'changeActiveUser'])->name('changeActiveUser');
-        Route::get('get-user-events'  , [UserController::class , 'get_user_events'])->name('get-user-events');
-        Route::get('get-user-parties'  , [UserController::class , 'get_user_parties'])->name('get-user-parties');
+        Route::resource('/users'            , UserController::class);
+        Route::get('get-users'              , [UserController::class , 'get_users'])->name('get-users');
+        Route::get('/changeActiveUser'      , [UserController::class , 'changeActiveUser'])->name('changeActiveUser');
+        Route::get('get-user-events'        , [UserController::class , 'get_user_events'])->name('get-user-events');
+        Route::get('get-user-parties'       , [UserController::class , 'get_user_parties'])->name('get-user-parties');
+        Route::get('user-notify/{id}'       , [UserController::class , 'user_notify'])->name('user-notify');
+        Route::post('send-user-notify/{id}' , [UserController::class , 'send_user_notify'])->name('send-user-notify');
 
         // countries
         Route::resource('/countries' , CountryController::class);
@@ -111,6 +116,8 @@ Route::prefix('admin')->middleware('localization')->name('admin.')->group(functi
         Route::get('get-contacts'    , [ContactController::class , 'get_contacts'])->name('get-contacts');
 
 
+        Route::get('page-notification'       , [StaticController::class , 'page_notification'])->name('page-notification');
+        Route::post('send-notifications'     , [StaticController::class , 'send_notifications'])->name('send-notifications');
 
     });
 
