@@ -41,7 +41,7 @@ class HomeController extends Controller
 
 
         // start user type  =============================================================
-        $apple_users = (round(User::where('type', 'apple')->count() / $users, 2)) * 100;
+        $apple_users = (round(User::where('type', 'apple')->count() / $users, 2)) * 100 ;
         $gmail_users = (round(User::where('type', 'gmail')->count() / $users, 2)) * 100;
         $email_users = (round(User::where('type', 'email')->count() / $users, 2)) * 100;
         // end user type =============================================================
@@ -74,6 +74,9 @@ class HomeController extends Controller
         $users_count = ['month_list' => $month_list, 'counts_list' => $users_counts_list];
         $parties_count = ['month_list' => $month_list, 'counts_list' => $parties_counts_list];
 
+        $start_year = Carbon::now()->startOfYear();
+        $end_year = Carbon::now();
+
 
         // end users in year (charts) =============================================================
         $users_year = User::whereBetween('created_at', [$start_year, $end_year])->count();
@@ -89,7 +92,46 @@ class HomeController extends Controller
         $top_users = User::withCount('events')->orderByDesc('events_count')->take(7)->get();
         $parties_today = Party::whereBetween('date', [$startDate , $endDate ])->take(15)->get();
 
-        return view('dashboard.home' , compact('roles' , 'admins' , 'users' , 'countries' , 'events' , 'parties' , 'parties_today' , 'email_users' , 'apple_users' , 'gmail_users' , 'iPhone_users' , 'android_users' , 'top_packages' , 'top_users' , 'users_count' , 'parties_count' , 'users_year' , 'parties_year'));
+        // events profits =============================================================================
+        $event_year = EventUser::whereBetween('event_users.created_at', [$start_year, $end_year])
+        ->join('events', 'event_users.event_id', '=', 'events.id')
+        ->selectRaw('SUM(events.count) as total_count, SUM(events.price) as total_price')
+        ->first();
+
+        $count_year = $event_year->total_count ?? 0;
+        $price_year = $event_year->total_price ?? 0;
+
+
+        $event_month = EventUser::whereBetween('event_users.created_at', [$startMonth, $endMonth])
+        ->join('events', 'event_users.event_id', '=', 'events.id')
+        ->selectRaw('SUM(events.count) as total_count, SUM(events.price) as total_price')
+        ->first();
+
+        $count_month = $event_month->total_count ?? 0;
+        $price_month = $event_month->total_price ?? 0;
+
+
+        $event_week = EventUser::whereBetween('event_users.created_at', [$startWeek, $endWeek])
+        ->join('events', 'event_users.event_id', '=', 'events.id')
+        ->selectRaw('SUM(events.count) as total_count, SUM(events.price) as total_price')
+        ->first();
+
+        $count_week = $event_week->total_count ?? 0;
+        $price_week = $event_week->total_price ?? 0;
+
+
+        $event_today = EventUser::whereBetween('event_users.created_at', [$startDate, $endDate])
+        ->join('events', 'event_users.event_id', '=', 'events.id')
+        ->selectRaw('SUM(events.count) as total_count, SUM(events.price) as total_price')
+        ->first();
+
+        $count_today = $event_today->total_count ?? 0;
+        $price_today = $event_today->total_price ?? 0;
+
+        // events profits =============================================================================
+
+
+        return view('dashboard.home' , compact('roles' , 'admins' , 'users' , 'countries' , 'events' , 'parties' , 'parties_today' , 'email_users' , 'apple_users' , 'gmail_users' , 'iPhone_users' , 'android_users' , 'top_packages' , 'top_users' , 'users_count' , 'parties_count' , 'users_year' , 'parties_year' , 'count_year' , 'price_year' , 'count_month' , 'price_month' , 'count_week' , 'price_week' , 'count_today' , 'price_today'));
     }
 
 

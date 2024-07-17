@@ -1,10 +1,10 @@
-<div class="col-xxl-12">
+<div class="col-xx-12">
     <div class="card card-height-100">
         <div class="card-header align-items-center d-flex">
             <h4 class="card-title mb-0 flex-grow-1">{{ __('models.chart_users')  }} </h4>
         </div><!-- end card header -->
         <div class="card-body px-0">
-            <ul class="list-inline main-chart text-center mb-0">
+            <ul class="list-inline lmain-chart text-center mb-0">
                 <li class="list-inline-item chart-border-left me-0">
                     <h4>{{ $users_year }}<span class="text-muted d-inline-block fs-13 align-middle ms-2">{{ __('models.users_year') }}</span></h4>
                 </li>

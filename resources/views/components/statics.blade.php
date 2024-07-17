@@ -1,12 +1,12 @@
 
 @props([
-     'label' , 'value' , 'color' , 'route' => ''
+     'label' , 'value' , 'color' , 'route' => '' , 'col' => ''
 ])
 
 
 
 
-<div class="col-xl-4 col-md-6">
+<div class="col-xl-{{ $col ? $col : '4' }} col-md-6">
     <!-- card -->
     <div class="card card-animate">
         <div class="card-body">
