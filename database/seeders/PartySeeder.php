@@ -35,7 +35,7 @@ class PartySeeder extends Seeder
                 'transmission_failure' => 5 ,
                 'apology'              => 5 ,
                 'not_sent'             => 5 ,
-                'created_at' => now()
+                'created_at' => now()->subMonth(rand(1 ,7)),
             ]);
         }
 

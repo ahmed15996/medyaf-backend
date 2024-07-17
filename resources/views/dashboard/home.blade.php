@@ -29,43 +29,9 @@
             {{--  charts  --}}
             <div class="row">
 
+               @include('dashboard.charts')
 
-                <div class="col-xxl-12">
-                    <div class="card card-height-100">
-                        <div class="card-header align-items-center d-flex">
-                            <h4 class="card-title mb-0 flex-grow-1">Balance Overview</h4>
-                            <div class="flex-shrink-0">
-                                <div class="dropdown card-header-dropdown">
-                                    <a class="text-reset dropdown-btn" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <span class="fw-semibold text-uppercase fs-12">Sort by: </span><span class="text-muted">Current Year<i class="mdi mdi-chevron-down ms-1"></i></span>
-                                    </a>
-                                    <div class="dropdown-menu dropdown-menu-end">
-                                        <a class="dropdown-item" href="#">Today</a>
-                                        <a class="dropdown-item" href="#">Last Week</a>
-                                        <a class="dropdown-item" href="#">Last Month</a>
-                                        <a class="dropdown-item" href="#">Current Year</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div><!-- end card header -->
-                        <div class="card-body px-0">
-                            <ul class="list-inline main-chart text-center mb-0">
-                                <li class="list-inline-item chart-border-left me-0 border-0">
-                                    <h4 class="text-primary">$584k <span class="text-muted d-inline-block fs-13 align-middle ms-2">Revenue</span></h4>
-                                </li>
-                                <li class="list-inline-item chart-border-left me-0">
-                                    <h4>$497k<span class="text-muted d-inline-block fs-13 align-middle ms-2">Expenses</span>
-                                    </h4>
-                                </li>
-                                <li class="list-inline-item chart-border-left me-0">
-                                    <h4><span data-plugin="counterup">3.6</span>%<span class="text-muted d-inline-block fs-13 align-middle ms-2">Profit Ratio</span></h4>
-                                </li>
-                            </ul>
 
-                            <div id="revenue-expenses-charts" data-colors='["--vz-success", "--vz-danger"]' class="apex-charts" dir="ltr"></div>
-                        </div>
-                    </div><!-- end card -->
-                </div><!-- end col -->
             </div>
 
             {{--  circles  --}}
@@ -213,9 +179,8 @@
                         <div class="card-body">
                             <div class="table-responsive table-card">
 
-                                @if ($top_users->count() > 0)
 
-                                    <table class="table align-middle table-borderless table-centered table-nowrap mb-0">
+                                <table class="table align-middle table-borderless table-centered table-nowrap mb-0">
                                         <thead class="text-muted table-light">
                                             <tr>
                                                 <th scope="col" style="width: 62;">{{ __('models.name') }}</th>
@@ -225,6 +190,7 @@
                                         </thead>
                                         <tbody>
 
+                                        @if ($top_users->count() > 0)
                                             @foreach ( $top_users as $user)
 
                                                 <tr>
@@ -237,12 +203,12 @@
 
                                             @endforeach
 
+                                        @endif
 
                                         </tbody><!-- end tbody -->
 
                                     </table>
 
-                                @endif
 
 
                             </div><!-- end -->
@@ -271,7 +237,6 @@
                         </div><!-- end card header -->
                         <div class="card-body">
                             <div class="table-responsive table-card">
-                              @if ($top_packages->count() > 0)
                                 <table class="table align-middle table-borderless table-centered table-nowrap mb-0">
                                     <thead class="text-muted table-light">
                                         <tr>
@@ -282,6 +247,7 @@
                                     </thead>
                                     <tbody>
 
+                                    @if ($top_packages->count() > 0)
                                         @foreach ($top_packages as $package)
                                             <tr>
                                                 <td>{{ $package->price }}</td>
@@ -289,10 +255,10 @@
                                                 <td>{{ $package->event_users }}</td>
                                             </tr><!-- end -->
                                         @endforeach
+                                    @endif
 
                                     </tbody><!-- end tbody -->
                                 </table>
-                              @endif
                             </div><!-- end -->
                         </div><!-- end cardbody -->
                     </div><!-- end card -->
@@ -323,7 +289,7 @@
                 <div class="col-xxl-12">
                     <div class="card">
                         <div class="card-header align-items-center d-flex">
-                            <a href="#" class="btn btn-success waves-effect waves-light btn-block add-input-value-color">{{ __('models.party_today') }}</a>
+                            <h4 class="card-title mb-0 flex-grow-1">{{ __('models.party_today') }}</h4>
                         </div><!-- end card header -->
                         @if ($parties_today->count() > 0 )
                             <div class="card-body pt-0">
@@ -396,7 +362,6 @@
 @section('js')
 
     <script src="{{ asset('dashboard/assets/libs/apexcharts/apexcharts.min.js') }}"></script>
-    <script src="{{ asset('dashboard/assets/js/pages/dashboard-crm.init.js') }}"></script>
     <script src="{{ asset('dashboard/assets/js/pages/dashboard-analytics.init.js') }}"></script>
 
 @endsection
